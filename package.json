@@ -21,10 +21,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:prod": "npm run build && serve -s build",
-    "lint": "npx eslint src/*",
-    "lint:fix": "npx eslint src/* --fix",
+    "lint": "npx eslint src",
+    "lint:fix": "npx eslint src --fix",
     "lint:css": "npx eslint src/**/*.css",
-    "checkTs": "tsc --noEmit"
+    "checkTs": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
