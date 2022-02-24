@@ -1,9 +1,9 @@
-# Tent ui
+# 10T Command Center UI
 
 # API & Frontend defaults
 REACT_APP_DASH_URL=http://localhost:5000
 
-Getting the app running locally, after you've setup you `.env` of course. Also included are some helper scripts for linting, boilerplate generation, and type checking.
+Getting the app running locally, after you've setup you `.env` of course. Also included some helper scripts for linting, and type checking.
 
 ```bash
 # clone it
