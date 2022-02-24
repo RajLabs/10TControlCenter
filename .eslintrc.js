@@ -6,7 +6,7 @@ const prettierOptions = JSON.parse(
 );
 
 module.exports = {
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   extends: [
     'plugin:react/recommended',
     'airbnb',
@@ -38,25 +38,19 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/comma-dangle': ['off'],
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-explicit-any': 0,
-    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/prefer-default-export': 2,
     'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/destructuring-assignment': 'warn',
     'no-param-reassign': ['error', { props: false }],
     'no-plusplus': 'off',
     'no-unused-vars': 'warn',
     'prettier/prettier': ['error', prettierOptions],
-    'react/jsx-props-no-spreading': [
-      'warn',
-      {
-        html: 'ignore',
-        exceptions: ['**/*.stories.tsx']
-      }
-    ],
     'import/no-extraneous-dependencies': [
       'error',
       {
@@ -69,20 +63,20 @@ module.exports = {
         ]
       }
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
+    'import/extensions': [
+      'error',
+      'ignorePackages',
       {
-        "ts": "never",
-        "tsx": "never"
+        ts: 'never',
+        tsx: 'never'
       }
     ],
-    "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
-    "max-len": ["warn", { "code": 80 }],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
+    'max-len': ['warn', { code: 80 }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/prop-types': 'off'
   },
   overrides: [
     {
@@ -91,8 +85,8 @@ module.exports = {
     }
   ],
   settings: {
-    "import/resolver": {
-      "typescript": {}
+    'import/resolver': {
+      typescript: {}
     }
   }
 };
