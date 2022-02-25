@@ -42,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-explicit-any': 0,
     'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+    'react/react-in-jsx-scope': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/prefer-default-export': 2,
     'react/require-default-props': 'off',
@@ -49,7 +50,8 @@ module.exports = {
     'react/destructuring-assignment': 'warn',
     'no-param-reassign': ['error', { props: false }],
     'no-plusplus': 'off',
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
     'prettier/prettier': ['error', prettierOptions],
     'import/no-extraneous-dependencies': [
       'error',
@@ -82,6 +84,12 @@ module.exports = {
     {
       files: ['**/*.ts?(x)'],
       rules: { 'prettier/prettier': ['warn', prettierOptions] }
+    },
+    {
+      files: ['**/*.ts?(x)'],
+      rules: {
+        'react-hooks/exhaustive-deps': 'off'
+      }
     }
   ],
   settings: {

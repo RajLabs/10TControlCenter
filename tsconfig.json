@@ -2,11 +2,16 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "incremental": true,
+    "outDir": "build/lib",
+    "sourceMap": true,
+    "importHelpers": true,
+    "declaration": true,
     "allowJs": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -15,7 +20,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitReturns": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "build", "scripts"]
 }
