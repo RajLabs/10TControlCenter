@@ -1,0 +1,87 @@
+*{
+     font-size: 15px;
+}
+.notificationIcon{
+     color: #707070;
+     float: left;
+     font-size: 20px;
+     margin-left: 10px;
+     margin-top: 3px;
+}
+.avatar{
+     background-color: #5346A0;
+     color: #fff;
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 0;
+     float: left;
+     font-size: 12px;
+     margin-left: 10px;
+}
+.userName{
+     color: #000;
+     font-size: 15px;
+     float: left;
+     padding-left: 10px;
+     padding-top: 5px;
+}
+.menuIcon{
+    color: #707070;
+    float: left;
+    margin-top: 2px;
+}
+.listItem{
+     padding: 0 !important;
+     margin-bottom: 10px;
+}
+.accordion{
+     min-width: 240px !important;
+     box-shadow: none !important;
+}
+.accordion:hover{
+     background-color: #F5F8FD;
+     color: #5346A0;
+}
+.accordionIcon{
+     font-size: medium !important;
+}
+.drawerListIcon{
+     font-size: 1.5rem;
+}
+.routerLink{
+     color: #4d4a4a;
+     text-decoration: none;
+}
+.routerLink:hover {
+   color: #5346A0;
+}
+.dashboard:hover {
+   color: #5346A0;
+   background-color: #F5F8FD;
+
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  appearance: none;
+  background: none;
+  font-size: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+  outline: none;
+  border: 2px solid transparent;
+  color: rgb(112, 76, 182);
+  padding-bottom: 4px;
+  cursor: pointer;
+  background-color: rgba(112, 76, 182, 0.1);
+  border-radius: 2px;
+  transition: all 0.15s;
+}

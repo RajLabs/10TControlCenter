@@ -1,16 +1,16 @@
-import React from 'react';
-import { styled, Theme, CSSObject } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-// import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import { MoreVert, NotificationsActive } from '@mui/icons-material';
-// import { makeStyles } from '@mui/styles';
-import { Grid } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { CssBaseline, Grid } from '@mui/material';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import MuiDrawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import { CSSObject, styled, Theme } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import React, { useState } from 'react';
+import Authentication from '../auth/components/Authentication';
+import styles from './Console.module.css';
 import DrawerList from './DrawerList';
 
 const drawerWidth = 240;
@@ -83,22 +83,9 @@ const Drawer = styled(MuiDrawer, {
     '& .MuiDrawer-paper': closedMixin(theme)
   })
 }));
-// const useStyles = makeStyles({
-//   appBarMenu: {
-//     float: 'right',
-//     marginRight: '5%'
-//   },
-//   avatar: {
-//     backgroundColor: '#5346A0'
-//   },
-//   notification: {
-//     float: ''
-//   }
-// });
+
 export default function Console() {
-  // const theme = useTheme();
-  // const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(!open);
@@ -107,7 +94,7 @@ export default function Console() {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        {/* <CssBaseline /> */}
+        <CssBaseline />
         <AppBar
           position="fixed"
           open={open}
@@ -115,7 +102,7 @@ export default function Console() {
         >
           <Toolbar>
             <Grid container spacing={1}>
-              <Grid item md={10}>
+              <Grid item md={10} xs={6}>
                 <IconButton
                   aria-label="open drawer"
                   onClick={handleDrawerOpen}
@@ -128,53 +115,12 @@ export default function Console() {
                   <MenuIcon />
                 </IconButton>
               </Grid>
-              <Grid item md={2}>
+              <Grid item md={2} xs={6}>
                 <div style={{ marginTop: '10px' }}>
-                  <NotificationsActive
-                    style={{
-                      color: '#707070',
-                      float: 'left',
-                      fontSize: '20px',
-                      marginLeft: '10px',
-                      marginTop: '8px'
-                    }}
-                  />
-                  <span
-                    style={{
-                      backgroundColor: '#5346A0',
-                      color: '#fff',
-                      width: '35px',
-                      height: '35px',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      padding: 0,
-                      float: 'left',
-                      fontSize: '12px',
-                      marginLeft: '10px'
-                    }}
-                  >
-                    MK
-                  </span>
-                  <span
-                    style={{
-                      color: '#000',
-                      fontSize: 15,
-                      float: 'left',
-                      paddingLeft: '10px',
-                      paddingTop: '5px'
-                    }}
-                  >
-                    Mahesh Srinivasan
-                  </span>
-                  <MoreVert
-                    style={{
-                      color: '#707070',
-                      float: 'left',
-                      marginTop: '2px'
-                    }}
-                  />
+                  <NotificationsActive className={styles.notificationIcon} />
+                  <span className={styles.avatar}>MK</span>
+                  <span className={styles.userName}>Mahesh Srinivasan</span>
+                  <MoreVert className={styles.menuIcon} />
                 </div>
               </Grid>
             </Grid>
@@ -185,8 +131,8 @@ export default function Console() {
           <Divider />
           <DrawerList />
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          hi
+        <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 50 }}>
+          <Authentication />
         </Box>
       </Box>
     </div>
