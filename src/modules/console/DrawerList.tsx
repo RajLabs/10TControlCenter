@@ -20,6 +20,7 @@ export default function DrawerList() {
       <ListItem className={styles.listItem}>
         <Accordion className={styles.accordion}>
           <AccordionSummary
+            className={styles.accordionSummary}
             expandIcon={<ExpandMoreIcon className={styles.accordionIcon} />}
             aria-controls="panel1a-content"
           >
@@ -28,12 +29,18 @@ export default function DrawerList() {
             </ListItemIcon>
             <ListItemText>Organizations</ListItemText>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className={styles.normalization}>
             <Link to="/" className={styles.routerLink}>
-              <ListItem>All Organizations</ListItem>
+              <AccordionSummary className={styles.accordionSummary}>
+                <ListItemText>AO</ListItemText>
+                <ListItemText> All Organizations</ListItemText>
+              </AccordionSummary>
             </Link>
             <Link to="/" className={styles.routerLink}>
-              <ListItem>Create Organization</ListItem>
+              <AccordionSummary className={styles.accordionSummary}>
+                <ListItemText>+O</ListItemText>
+                <ListItemText> Create Organizations</ListItemText>
+              </AccordionSummary>
             </Link>
           </AccordionDetails>
         </Accordion>
@@ -41,6 +48,7 @@ export default function DrawerList() {
       <ListItem className={styles.listItem}>
         <Accordion className={styles.accordion}>
           <AccordionSummary
+            className={styles.accordionSummary}
             expandIcon={<ExpandMoreIcon className={styles.accordionIcon} />}
             aria-controls="panel1a-content"
           >
@@ -49,12 +57,18 @@ export default function DrawerList() {
             </ListItemIcon>
             <ListItemText>Location</ListItemText>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className={styles.normalization}>
             <Link to="/" className={styles.routerLink}>
-              <ListItem>All Location</ListItem>
+              <AccordionSummary className={styles.accordionSummary}>
+                <ListItemText>AL</ListItemText>
+                <ListItemText> All Location</ListItemText>
+              </AccordionSummary>
             </Link>
             <Link to="/" className={styles.routerLink}>
-              <ListItem>Create Location</ListItem>
+              <AccordionSummary className={styles.accordionSummary}>
+                <ListItemText>+L</ListItemText>
+                <ListItemText> Create Location</ListItemText>
+              </AccordionSummary>
             </Link>
           </AccordionDetails>
         </Accordion>
@@ -62,6 +76,7 @@ export default function DrawerList() {
       <ListItem className={styles.listItem}>
         <Accordion className={styles.accordion}>
           <AccordionSummary
+            className={styles.accordionSummary}
             expandIcon={<ExpandMoreIcon className={styles.accordionIcon} />}
             aria-controls="panel1a-content"
           >
@@ -70,12 +85,18 @@ export default function DrawerList() {
             </ListItemIcon>
             <ListItemText>Equipment</ListItemText>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className={styles.normalization}>
             <Link to="/" className={styles.routerLink}>
-              <ListItem>All Equipment</ListItem>
+              <AccordionSummary className={styles.accordionSummary}>
+                <ListItemText>AE</ListItemText>
+                <ListItemText> All Equipment</ListItemText>
+              </AccordionSummary>
             </Link>
             <Link to="/" className={styles.routerLink}>
-              <ListItem>Create Equipment</ListItem>
+              <AccordionSummary className={styles.accordionSummary}>
+                <ListItemText>+E</ListItemText>
+                <ListItemText> Create Equipment</ListItemText>
+              </AccordionSummary>
             </Link>
           </AccordionDetails>
         </Accordion>

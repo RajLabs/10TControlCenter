@@ -1,100 +1,94 @@
 import { MoreVert, NotificationsActive } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { CssBaseline, Grid } from '@mui/material';
+import { Drawer, Grid } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import MuiDrawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import { CSSObject, styled, Theme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
+import useBreakpoint from 'utils/useBreakpoint.js';
 import React, { useState } from 'react';
-import Authentication from '../auth/components/Authentication';
 import styles from './Console.module.css';
 import DrawerList from './DrawerList';
 
-const drawerWidth = 240;
-
-const openedMixin = (theme: Theme): CSSObject => ({
-  width: drawerWidth,
-  transition: theme.transitions.create('width', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen
-  }),
-  overflowX: 'hidden'
-});
-
-const closedMixin = (theme: Theme): CSSObject => ({
-  transition: theme.transitions.create('width', {
+const drawerWidth = 250;
+const Main = styled('main', { shouldForwardProp: prop => prop !== 'open' })<{
+  open?: boolean;
+}>(({ theme, open }) => ({
+  flexGrow: 1,
+  backgroundColor: '#F5F8FD',
+  padding: theme.spacing(3),
+  transition: theme.transitions.create('margin', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen
   }),
-  overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(9)} + 1px)`
+  marginLeft: `-${drawerWidth}px`,
+  ...(open && {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen
+    }),
+    marginLeft: 0
+  })
+}));
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;
+}
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: prop => prop !== 'open'
+})<AppBarProps>(({ theme, open }) => ({
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen
+  }),
+  backgroundColor: '#B6121B',
+  [theme.breakpoints.up('md')]: {
+    ...(open && {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: `${drawerWidth}px`,
+      transition: theme.transitions.create(['margin', 'width'], {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen
+      })
+    })
+  },
+  [theme.breakpoints.between('sm', 'md')]: {
+    ...(open && {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: `${drawerWidth}px`,
+      transition: theme.transitions.create(['margin', 'width'], {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen
+      })
+    })
   }
-});
+}));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
-  ...theme.mixins.toolbar
-}));
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: prop => prop !== 'open'
-})<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  })
-}));
-
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: prop => prop !== 'open'
-})(({ theme, open }) => ({
-  width: drawerWidth,
-  flexShrink: 0,
-  whiteSpace: 'nowrap',
-  boxSizing: 'border-box',
-  ...(open && {
-    ...openedMixin(theme),
-    '& .MuiDrawer-paper': openedMixin(theme)
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    '& .MuiDrawer-paper': closedMixin(theme)
-  })
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end'
 }));
 
 export default function Console() {
   const [open, setOpen] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const point = useBreakpoint();
 
   const handleDrawerOpen = () => {
     setOpen(!open);
+  };
+  const toggleDrawer = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
         <AppBar
           position="fixed"
           open={open}
@@ -102,38 +96,110 @@ export default function Console() {
         >
           <Toolbar>
             <Grid container spacing={1}>
-              <Grid item md={10} xs={6}>
+              <Grid item md={7} xs={10} lg={9}>
                 <IconButton
                   aria-label="open drawer"
                   onClick={handleDrawerOpen}
+                  className={styles.menuIcon}
                   edge="start"
                   sx={{
-                    marginRight: '36px',
-                    ...(open && { display: 'inline' })
+                    mr: 2,
+                    display: {
+                      xs: 'none',
+                      sm: 'block'
+                    }
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="open drawer"
+                  onClick={toggleDrawer}
+                  className={styles.menuIcon}
+                  edge="start"
+                  sx={{
+                    mr: 2,
+                    display: {
+                      xs: 'block',
+                      sm: 'none'
+                    }
                   }}
                 >
                   <MenuIcon />
                 </IconButton>
               </Grid>
-              <Grid item md={2} xs={6}>
-                <div style={{ marginTop: '10px' }}>
+              <Grid item md={5} xs={2} lg={3}>
+                <div className={styles.userInfo}>
                   <NotificationsActive className={styles.notificationIcon} />
                   <span className={styles.avatar}>MK</span>
                   <span className={styles.userName}>Mahesh Srinivasan</span>
-                  <MoreVert className={styles.menuIcon} />
+                </div>
+                <div style={{ marginTop: '8px' }}>
+                  <MoreVert className={styles.menuList} />
                 </div>
               </Grid>
             </Grid>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
-          <DrawerHeader>Logo</DrawerHeader>
+        <Drawer
+          sx={{
+            display: {
+              xs: 'none',
+              sm: 'block'
+            },
+            width: drawerWidth,
+            flexShrink: 0,
+            '& .MuiDrawer-paper': {
+              width: drawerWidth,
+              boxSizing: 'border-box'
+            }
+          }}
+          variant={point === 'sm' ? 'permanent' : 'persistent'}
+          anchor="left"
+          open={open}
+        >
+          <DrawerHeader
+            style={{
+              paddingRight: '100px',
+              fontSize: '30px',
+              color: '#5346A0'
+            }}
+          >
+            ESP
+          </DrawerHeader>
           <Divider />
           <DrawerList />
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 50 }}>
-          <Authentication />
-        </Box>
+        <Drawer
+          open={mobileOpen}
+          onClose={toggleDrawer}
+          ModalProps={{
+            keepMounted: true
+          }}
+          sx={{
+            display: {
+              xs: 'block',
+              sm: 'none'
+            },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth
+            }
+          }}
+        >
+          <DrawerHeader
+            style={{
+              paddingRight: '100px',
+              fontSize: '30px',
+              color: '#5346A0'
+            }}
+          >
+            ESP
+          </DrawerHeader>
+          <Divider />
+          <DrawerList />
+        </Drawer>
+        <Main style={{ backgroundColor: '#F5F8FD', height: 900 }}>hi</Main>
       </Box>
     </div>
   );
