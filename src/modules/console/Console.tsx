@@ -7,8 +7,10 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
-import useBreakpoint from 'utils/useBreakpoint.js';
+import AllLocation from 'modules/dashboard/location/AllLocation';
 import React, { useState } from 'react';
+// import DashboardRouter from 'router/DashboardRouter';
+import useBreakpoint from 'utils/useBreakpoint.js';
 import styles from './Console.module.css';
 import DrawerList from './DrawerList';
 
@@ -199,7 +201,9 @@ export default function Console() {
           <Divider />
           <DrawerList />
         </Drawer>
-        <Main style={{ backgroundColor: '#F5F8FD', height: 900 }}>hi</Main>
+        <Main open={open} style={{ padding: 0 }}>
+          <AllLocation />
+        </Main>
       </Box>
     </div>
   );

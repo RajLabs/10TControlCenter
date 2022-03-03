@@ -30,13 +30,13 @@ export default function DrawerList() {
             <ListItemText>Organizations</ListItemText>
           </AccordionSummary>
           <AccordionDetails className={styles.normalization}>
-            <Link to="/" className={styles.routerLink}>
+            <Link to="/allorganization" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>AO</ListItemText>
                 <ListItemText> All Organizations</ListItemText>
               </AccordionSummary>
             </Link>
-            <Link to="/" className={styles.routerLink}>
+            <Link to="/createorganization" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>+O</ListItemText>
                 <ListItemText> Create Organizations</ListItemText>
@@ -58,13 +58,13 @@ export default function DrawerList() {
             <ListItemText>Location</ListItemText>
           </AccordionSummary>
           <AccordionDetails className={styles.normalization}>
-            <Link to="/" className={styles.routerLink}>
+            <Link to="/alllocation" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>AL</ListItemText>
                 <ListItemText> All Location</ListItemText>
               </AccordionSummary>
             </Link>
-            <Link to="/" className={styles.routerLink}>
+            <Link to="/createlocation" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>+L</ListItemText>
                 <ListItemText> Create Location</ListItemText>
@@ -86,13 +86,13 @@ export default function DrawerList() {
             <ListItemText>Equipment</ListItemText>
           </AccordionSummary>
           <AccordionDetails className={styles.normalization}>
-            <Link to="/" className={styles.routerLink}>
+            <Link to="/allequipment" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>AE</ListItemText>
                 <ListItemText> All Equipment</ListItemText>
               </AccordionSummary>
             </Link>
-            <Link to="/" className={styles.routerLink}>
+            <Link to="/createequipment" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>+E</ListItemText>
                 <ListItemText> Create Equipment</ListItemText>

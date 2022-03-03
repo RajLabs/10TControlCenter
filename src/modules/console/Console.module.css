@@ -52,10 +52,17 @@
 .accordionSummary{
      height: 60px !important;
 }
+
 .accordionSummary:hover{
      background-color: #F5F8FD;
      color: #5346A0;
-}
+} 
+.accordionSummary:hover .drawerListIcon{
+     color: #5346A0;
+} 
+.accordionSummary:hover .accordionIcon{
+     color: #5346A0;
+} 
 .accordionIcon{
      font-size: medium !important;
 }
