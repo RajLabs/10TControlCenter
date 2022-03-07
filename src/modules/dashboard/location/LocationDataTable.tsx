@@ -3,10 +3,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import {
   Autocomplete,
   Button,
-  Grid,
   IconButton,
   InputBase,
-  Stack,
+  Pagination,
   TextField
 } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -16,9 +15,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Toolbar from '@mui/material/Toolbar';
 import * as React from 'react';
 import styles from './Location.module.css';
 
@@ -241,7 +238,8 @@ function EnhancedTableHead() {
           <TableCell
             sx={{
               backgroundColor: '#D3E3FC',
-              fontWeight: 900
+              fontWeight: 900,
+              minWidth: '150px'
             }}
           >
             {headCell.label}
@@ -257,117 +255,74 @@ function EnhancedTableHead() {
 
 function EnhancedTableToolbar() {
   return (
-    <Toolbar>
-      <Grid container spacing={1} sx={{ marginTop: '20px' }}>
-        <Grid item xs={10} md={10} lg={10}>
-          <span>Filter</span>
-          <InputBase
-            className={styles.locationSearch}
-            placeholder="Location Name / Address"
-            inputProps={{ 'aria-label': 'search' }}
-          />
-          <IconButton
-            className={styles.locationSearchIcon}
-            type="submit"
-            aria-label="search"
-          >
-            <SearchIcon />
-          </IconButton>
-          <div className={styles.city}>
-            <Autocomplete
-              id="size-small-outlined"
-              size="small"
-              options={names}
-              getOptionLabel={option => option}
-              renderInput={params => (
-                <TextField
-                  {...params}
-                  placeholder="City"
-                  sx={{ marginTop: '-7px' }}
-                />
-              )}
-            />
-          </div>
-          <Stack
-            spacing={2}
-            sx={{
-              width: 100,
-              display: 'inline-block',
-              mx: 1
-            }}
-          >
-            <Autocomplete
-              id="size-small-outlined"
-              size="small"
-              options={names}
-              getOptionLabel={option => option}
-              renderInput={params => (
-                <TextField
-                  {...params}
-                  placeholder="State"
-                  sx={{ marginTop: '-7px' }}
-                />
-              )}
-            />
-          </Stack>
-          <Button variant="contained" style={{ backgroundColor: '#5346A0' }}>
-            +Add
-          </Button>
-        </Grid>
-        <Grid item xs={2} md={2} lg={2}>
-          <Button
-            variant="contained"
-            style={{ backgroundColor: 'gray', borderRadius: '20px' }}
-          >
-            +Add Location
-          </Button>
-        </Grid>
-      </Grid>
-    </Toolbar>
+    <section style={{}}>
+      <strong style={{ float: 'left', marginTop: '15px' }}>
+        {' '}
+        Filter &nbsp;{' '}
+      </strong>
+      <div className={styles.locationSearch}>
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Search User..."
+          inputProps={{ 'aria-label': 'search' }}
+        />
+        <IconButton type="submit" aria-label="search">
+          <SearchIcon />
+        </IconButton>
+      </div>
+      <div className={styles.city}>
+        <Autocomplete
+          size="small"
+          options={names}
+          getOptionLabel={option => option}
+          renderInput={params => <TextField {...params} placeholder="City" />}
+        />
+      </div>
+      <div className={styles.city}>
+        <Autocomplete
+          size="small"
+          options={names}
+          getOptionLabel={option => option}
+          renderInput={params => <TextField {...params} placeholder="State" />}
+        />
+      </div>
+      <Button variant="contained" className={styles.addBTN}>
+        +Add
+      </Button>
+      <Button variant="contained" className={styles.addLocation}>
+        +Add Location
+      </Button>
+    </section>
   );
 }
 
 export default function LocationDataTable() {
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar />
-        <TableContainer
-          sx={{ paddingLeft: '25px', paddingRight: '25px', marginTop: '20px' }}
+    <div style={{ width: '100%' }}>
+      <Box sx={{ width: '99%' }}>
+        <Paper
+          sx={{ width: '99%', mb: 2, p: 4 }}
+          className={styles.allLocationTable}
         >
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
-            <EnhancedTableHead />
-            <TableBody>
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const labelId = `enhanced-table-checkbox-${index}`;
+          <EnhancedTableToolbar />
+          <TableContainer>
+            <Table
+              sx={{ minWidth: 750, marginTop: '20px', overflow: 'visible' }}
+              aria-labelledby="tableTitle"
+            >
+              <EnhancedTableHead />
+              <TableBody>
+                {rows.map((row, index) => {
                   return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.location}
-                    >
+                    <TableRow hover tabIndex={-1} key={row.location}>
                       <TableCell
                         component="th"
-                        id={labelId}
                         scope="row"
                         padding="none"
                         align="left"
@@ -398,24 +353,18 @@ export default function LocationDataTable() {
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                <TableRow>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 15, 20]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
-    </Box>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <Pagination
+            count={5}
+            shape="rounded"
+            className={styles.pagination}
+            onChange={handleChangePage}
+            page={page}
+          />
+        </Paper>
+      </Box>
+    </div>
   );
 }

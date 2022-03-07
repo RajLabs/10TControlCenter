@@ -98,7 +98,7 @@ export default function Console() {
         >
           <Toolbar>
             <Grid container spacing={1}>
-              <Grid item md={7} xs={10} lg={9}>
+              <Grid item md={2} xs={2} lg={2}>
                 <IconButton
                   aria-label="open drawer"
                   onClick={handleDrawerOpen}
@@ -130,14 +130,14 @@ export default function Console() {
                   <MenuIcon />
                 </IconButton>
               </Grid>
-              <Grid item md={5} xs={2} lg={3}>
-                <div className={styles.userInfo}>
-                  <NotificationsActive className={styles.notificationIcon} />
-                  <span className={styles.avatar}>MK</span>
-                  <span className={styles.userName}>Mahesh Srinivasan</span>
-                </div>
-                <div style={{ marginTop: '8px' }}>
-                  <MoreVert className={styles.menuList} />
+              <Grid item md={10} xs={10} lg={10}>
+                <div style={{ float: 'right', marginRight: '20px' }}>
+                  <div className={styles.userInfo}>
+                    <NotificationsActive className={styles.notificationIcon} />
+                    <span className={styles.avatar}>MK</span>
+                    <span className={styles.userName}>Mahesh Srinivasan</span>
+                    <MoreVert className={styles.menuList} />
+                  </div>
                 </div>
               </Grid>
             </Grid>

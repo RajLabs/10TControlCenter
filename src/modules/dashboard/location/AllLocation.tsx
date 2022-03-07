@@ -1,9 +1,21 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { IconButton, InputBase } from '@mui/material';
+import { Autocomplete, IconButton, TextField } from '@mui/material';
 import React from 'react';
 import styles from './Location.module.css';
 import LocationDataTable from './LocationDataTable';
 
+const names = [
+  'Oliver Hansen',
+  'Van Henry',
+  'April Tucker',
+  'Ralph Hubbard',
+  'Omar Alexander',
+  'Carlos Abbott',
+  'Miriam Wagner',
+  'Bradley Wilkerson',
+  'Virginia Andrews',
+  'Kelly Snyder'
+];
 export default function AllLocation() {
   return (
     <div className={styles.sidebarMenuAlignment}>
@@ -12,18 +24,28 @@ export default function AllLocation() {
         <div className={styles.starbucks}>Starbucks</div>
       </div>
       <div className={styles.searchBar}>
-        <InputBase
-          className={styles.locationSearch}
-          placeholder="Starbucks"
-          inputProps={{ 'aria-label': 'search google maps' }}
-        />
         <IconButton
+          className={styles.searchLocation}
           type="submit"
-          className={styles.locationSearchIcon}
           aria-label="search"
         >
           <SearchIcon />
         </IconButton>
+        <div className={styles.locationSelector}>
+          <Autocomplete
+            size="small"
+            options={names}
+            getOptionLabel={option => option}
+            renderInput={params => (
+              <TextField
+                {...params}
+                placeholder="Location"
+                variant="standard"
+                InputProps={{ ...params.InputProps, disableUnderline: true }}
+              />
+            )}
+          />
+        </div>
       </div>
       <div className={styles.locationtable}>
         <LocationDataTable />

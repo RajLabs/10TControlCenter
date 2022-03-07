@@ -1,13 +1,13 @@
+import { purple } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
-import { green, purple } from '@mui/material/colors';
 
 const customTheme = createTheme({
   palette: {
     primary: {
-      main: purple[500]
+      main: '#5346A0'
     },
     secondary: {
-      main: green[500]
+      main: '#707070'
     }
   },
   breakpoints: {
