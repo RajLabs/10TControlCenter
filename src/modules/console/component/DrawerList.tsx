@@ -39,7 +39,7 @@ export default function DrawerList() {
             <Link to="/createorganization" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>+O</ListItemText>
-                <ListItemText> Create Organizations</ListItemText>
+                <ListItemText> Create Organization</ListItemText>
               </AccordionSummary>
             </Link>
           </AccordionDetails>
@@ -55,13 +55,13 @@ export default function DrawerList() {
             <ListItemIcon>
               <LocationOn className={styles.drawerListIcon} />
             </ListItemIcon>
-            <ListItemText>Location</ListItemText>
+            <ListItemText>Locations</ListItemText>
           </AccordionSummary>
           <AccordionDetails className={styles.normalization}>
             <Link to="/alllocation" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>AL</ListItemText>
-                <ListItemText> All Location</ListItemText>
+                <ListItemText> All Locations</ListItemText>
               </AccordionSummary>
             </Link>
             <Link to="/createlocation" className={styles.routerLink}>
@@ -83,13 +83,13 @@ export default function DrawerList() {
             <ListItemIcon>
               <Router className={styles.drawerListIcon} />
             </ListItemIcon>
-            <ListItemText>Equipment</ListItemText>
+            <ListItemText>Equipments</ListItemText>
           </AccordionSummary>
           <AccordionDetails className={styles.normalization}>
             <Link to="/allequipment" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>AE</ListItemText>
-                <ListItemText> All Equipment</ListItemText>
+                <ListItemText> All Equipments</ListItemText>
               </AccordionSummary>
             </Link>
             <Link to="/createequipment" className={styles.routerLink}>

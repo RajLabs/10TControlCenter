@@ -12,11 +12,13 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { location, rows } from '../LocationSlice';
 import styles from './Location.module.css';
 
 interface Data {
@@ -29,136 +31,6 @@ interface Data {
   emg: string;
 }
 
-function createData(
-  location: string,
-  address: string,
-  city: string,
-  state: string,
-  zip: number,
-  status: string,
-  emg: string
-): Data {
-  return {
-    location,
-    address,
-    city,
-    state,
-    zip,
-    status,
-    emg
-  };
-}
-
-const rows = [
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'offline',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'offline',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'Trouble',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'Trouble',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  ),
-  createData(
-    'Starbucks(4605 E Chandler Blvd-phonenix,AZ)',
-    '564 G.A.R HighWay',
-    'Phoneix',
-    'AZ',
-    45344,
-    'online',
-    'off'
-  )
-];
 interface HeadCell {
   disablePadding: boolean;
   id: keyof Data;
@@ -167,6 +39,12 @@ interface HeadCell {
 }
 
 const headCells: readonly HeadCell[] = [
+  {
+    id: 'location',
+    numeric: true,
+    disablePadding: false,
+    label: 'Location Name'
+  },
   {
     id: 'address',
     numeric: true,
@@ -205,47 +83,17 @@ const headCells: readonly HeadCell[] = [
   }
 ];
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder'
-];
 function EnhancedTableHead() {
   return (
-    <TableHead className={styles.tableHeader}>
-      <TableRow className={styles.tableHeader}>
-        <TableCell
-          sx={{
-            backgroundColor: '#D3E3FC',
-            paddingLeft: '20px',
-            minWidth: 200,
-            fontWeight: 900
-          }}
-        >
-          Location Name
-          <IconButton>
-            <ArrowDownward style={{ fontSize: 18, fontWeight: 900 }} />
-          </IconButton>
-        </TableCell>
+    <TableHead>
+      <TableRow>
         {headCells.map(headCell => (
-          <TableCell
-            sx={{
-              backgroundColor: '#D3E3FC',
-              fontWeight: 900,
-              minWidth: '150px'
-            }}
-          >
-            {headCell.label}
-            <IconButton>
-              <ArrowDownward style={{ fontSize: 18, fontWeight: 900 }} />
-            </IconButton>
+          <TableCell className={styles.tableHeader}>
+            <Button className={styles.tableHeaderBTN}>
+              {headCell.label}
+              &nbsp;
+              <ArrowDownward className={styles.tableHeaderIcon} />
+            </Button>
           </TableCell>
         ))}
       </TableRow>
@@ -256,32 +104,34 @@ function EnhancedTableHead() {
 function EnhancedTableToolbar() {
   return (
     <section style={{}}>
-      <strong style={{ float: 'left', marginTop: '15px' }}>
+      <strong style={{ float: 'left', marginTop: '10px' }}>
         {' '}
         Filter &nbsp;{' '}
       </strong>
       <div className={styles.locationSearch}>
         <InputBase
           sx={{ ml: 1, flex: 1 }}
-          placeholder="Search User..."
+          placeholder="Location Name / Address"
           inputProps={{ 'aria-label': 'search' }}
         />
         <IconButton type="submit" aria-label="search">
-          <SearchIcon />
+          <SearchIcon color="primary" />
         </IconButton>
       </div>
       <div className={styles.city}>
         <Autocomplete
           size="small"
-          options={names}
+          options={location}
           getOptionLabel={option => option}
-          renderInput={params => <TextField {...params} placeholder="City" />}
+          renderInput={params => (
+            <TextField {...params} placeholder="City" style={{ padding: 0 }} />
+          )}
         />
       </div>
       <div className={styles.city}>
         <Autocomplete
           size="small"
-          options={names}
+          options={location}
           getOptionLabel={option => option}
           renderInput={params => <TextField {...params} placeholder="State" />}
         />
@@ -305,22 +155,37 @@ export default function LocationDataTable() {
 
   return (
     <div style={{ width: '100%' }}>
-      <Box sx={{ width: '99%' }}>
+      <Box sx={{ width: '100%' }}>
         <Paper
-          sx={{ width: '99%', mb: 2, p: 4 }}
+          sx={{ width: '100%', mb: 2, p: 4 }}
           className={styles.allLocationTable}
         >
           <EnhancedTableToolbar />
           <TableContainer>
             <Table
-              sx={{ minWidth: 750, marginTop: '20px', overflow: 'visible' }}
+              sx={{
+                [`& .${tableCellClasses.root}`]: {
+                  borderBottom: 'none'
+                },
+                minWidth: 750,
+                marginTop: '20px',
+                overflow: 'visible'
+              }}
               aria-labelledby="tableTitle"
             >
               <EnhancedTableHead />
               <TableBody>
                 {rows.map((row, index) => {
                   return (
-                    <TableRow hover tabIndex={-1} key={row.location}>
+                    <TableRow
+                      tabIndex={-1}
+                      key={row.location}
+                      style={
+                        index % 2
+                          ? { background: '#F9F9F9' }
+                          : { background: 'white' }
+                      }
+                    >
                       <TableCell
                         component="th"
                         scope="row"
@@ -328,18 +193,20 @@ export default function LocationDataTable() {
                         align="left"
                         sx={{ padding: '20px' }}
                       >
-                        {row.location}
+                        <Link to="/" className={styles.linkToLocation}>
+                          {row.location}
+                        </Link>
                       </TableCell>
                       <TableCell align="left">{row.address}</TableCell>
                       <TableCell align="left">{row.city}</TableCell>
                       <TableCell align="left">{row.state}</TableCell>
                       <TableCell align="left">{row.zip}</TableCell>
-                      {row.status === 'online' ? (
+                      {row.status === 'Online' ? (
                         <TableCell align="left">
                           <div className={styles.online}> {row.status}</div>
                         </TableCell>
                       ) : null}
-                      {row.status === 'offline' ? (
+                      {row.status === 'Offline' ? (
                         <TableCell align="left">
                           <div className={styles.offline}> {row.status}</div>
                         </TableCell>
@@ -349,7 +216,7 @@ export default function LocationDataTable() {
                           <div className={styles.trouble}> {row.status}</div>
                         </TableCell>
                       ) : null}
-                      <TableCell align="left">{row.emg}</TableCell>
+                      <TableCell align="left">{row.emergence}</TableCell>
                     </TableRow>
                   );
                 })}

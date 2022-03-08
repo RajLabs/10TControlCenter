@@ -3,19 +3,8 @@ import { Autocomplete, IconButton, TextField } from '@mui/material';
 import React from 'react';
 import styles from './Location.module.css';
 import LocationDataTable from './LocationDataTable';
+import { location } from '../LocationSlice';
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder'
-];
 export default function AllLocation() {
   return (
     <div className={styles.sidebarMenuAlignment}>
@@ -34,12 +23,12 @@ export default function AllLocation() {
         <div className={styles.locationSelector}>
           <Autocomplete
             size="small"
-            options={names}
+            options={location}
             getOptionLabel={option => option}
             renderInput={params => (
               <TextField
                 {...params}
-                placeholder="Location"
+                placeholder="Starbucks"
                 variant="standard"
                 InputProps={{ ...params.InputProps, disableUnderline: true }}
               />

@@ -1,6 +1,6 @@
 import LoginPage from 'modules/auth/components/Login';
 import RequireAuth from 'modules/auth/components/RequireAuth';
-import Console from 'modules/console/Console';
+import Console from 'modules/console/component/Console';
 import Dashboard from 'modules/dashboard/Dashboard';
 import HomePage from 'modules/home/HomePage';
 import * as React from 'react';

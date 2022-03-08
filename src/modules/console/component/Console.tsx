@@ -7,10 +7,10 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
-import AllLocation from 'modules/dashboard/location/AllLocation';
 import React, { useState } from 'react';
 // import DashboardRouter from 'router/DashboardRouter';
 import useBreakpoint from 'utils/useBreakpoint.js';
+import AllLocation from '../../location/component/AllLocation';
 import styles from './Console.module.css';
 import DrawerList from './DrawerList';
 

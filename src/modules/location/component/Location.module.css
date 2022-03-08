@@ -1,21 +1,25 @@
 .sidebarMenuAlignment{
-    margin: 130px 30px 0 30px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 130px 30px 0 30px;
+    background-color: #EFEFEF;
 }
 .searchBar{
     float: right;
-     margin-bottom: 40px;
+    margin-bottom: 40px;
+    padding-right: 5px;
+    background-color: white !important;
+    border-radius: 5px;
 }
 .searchLocation{
     float: left;
     border-radius: 0% !important;
-    background-color: white !important;
     height: 42px;
     color:#5346A0 !important;
 }
 .locationSelector{
     float: left;
     min-width: 400px;
-    background-color: white;
     height: 42px;
     box-sizing: border-box;
     padding-top: 5px;
@@ -25,7 +29,7 @@
 }
 .locationHeader{
     float: left;
-     margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 .location{
     color:#5346A0;
@@ -41,6 +45,7 @@
     width: 100px;
     display: inline-block;
     margin-left: 5px;
+    height: 30px;
 }
 .allLocationTable{
     border-top:4px solid #5346A0;
@@ -48,53 +53,75 @@
     border-top-right-radius: 7px;
 }
 .locationSearch{
-     float: left;
-  border: 1px solid #ccc9c9 !important; 
+    float: left;
+    border: 1px solid #ccc9c9 !important; 
     border-radius: 5px;
-     height: 42px !important;
+    height: 42px !important;
 } 
 .addBTN{
+    text-transform: capitalize;
     float: left;
     margin-left: 5px !important;
     height: 41px;
     background-color: #5346A0 !important;
 } 
 .addLocation{
+    text-transform: capitalize;
     float: right !important;
-    background-color: gray !important;
+    background-color: #565656!important;
     border-radius: 20px !important;
 }
 .tableHeader{
-    max-height: 40px !important;
-    margin-top:30px !important ;
+    background-color:#D3E3FC;
+    font-weight:900 !important;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
+}
+.tableHeaderBTN{
+    color: #000 !important;
+    text-transform: capitalize !important;
+    font-weight: 600;
+}
+.tableHeaderBTN:hover{
+    background-color: transparent !important;
+}
+.tableHeaderIcon{
+    color: black;
+    font-size: 18px !important;
+    font-weight: 600;
 }
 .online{
     background-color: #50840B !important;
-    width: 65px;
-    max-height: 60px !important;
-    border-radius: 10px;
+    width: 70px;
+    height: 28px !important;
+     border-radius: 20px;
     color: white;
     padding-left:13px;
-    padding-bottom: 3px;
+    padding-top: 2px;
 }
 .trouble{
     background-color: #DFD800 !important;
-    width: 65px;
-    max-height: 60px !important;
-    border-radius: 10px;
-    padding-left:8px;
-    padding-bottom: 3px;
+    width: 70px;
+    height: 28px !important;
+    border-radius: 20px;
+    color: black;
+    padding-left:9px;
+    padding-top: 2px;
 }
 .offline{
     background-color: #E50505 !important;
-    width: 65px;
-    max-height: 60px !important;
-    border-radius: 10px;
+    width: 70px;
+    height: 28px !important;
+    border-radius: 20px;
     color: white;
     padding-left:12px;
-    padding-bottom: 3px;
+   padding-top: 2px;
 }
 .pagination{
     float: right;
     color: #5346A0;
 }
+.linkToLocation{
+    text-decoration: none;
+}
+

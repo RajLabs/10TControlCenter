@@ -1,9 +1,9 @@
-import AllEquipment from 'modules/dashboard/equipment/AllEquipment';
-import CreateEquipment from 'modules/dashboard/equipment/CreateEquipment';
-import AllLocation from 'modules/dashboard/location/AllLocation';
-import CreateLocation from 'modules/dashboard/location/CreateLocation';
-import AllOrganization from 'modules/dashboard/organization/AllOrganization';
-import CreateOrganization from 'modules/dashboard/organization/CreateOrganization';
+import AllEquipment from 'modules/equipment/component/AllEquipment';
+import CreateEquipment from 'modules/equipment/component/CreateEquipment';
+import AllLocation from 'modules/location/component/AllLocation';
+import CreateLocation from 'modules/location/component/CreateLocation';
+import AllOrganization from 'modules/organization/component/AllOrganization';
+import CreateOrganization from 'modules/organization/component/CreateOrganization';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
