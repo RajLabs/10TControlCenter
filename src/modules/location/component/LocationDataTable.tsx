@@ -1,9 +1,8 @@
-import { ArrowDownward } from '@mui/icons-material';
+import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Autocomplete,
   Button,
-  Chip,
   IconButton,
   InputBase,
   Pagination,
@@ -32,7 +31,6 @@ interface Data {
   status: string;
   emg: string;
 }
-
 interface HeadCell {
   disablePadding: boolean;
   id: keyof Data;
@@ -103,23 +101,50 @@ const useStyles = makeStyles({
     marginTop: '8px'
   },
   tableHeaderBTN: {
-    color: '#000',
     textTransform: 'capitalize',
     backgroundColor: 'transparent',
-    fontWeight: 500
+    fontWeight: 500,
+    cursor: 'pointer'
+  },
+  pagination: {
+    float: 'right',
+    paddingTop: '20px'
   }
 });
+
 function EnhancedTableHead() {
   const classes = useStyles();
+  const [changeArrow, setChangeArrow] = React.useState(false);
+
+  const handleSort = () => {
+    setChangeArrow(!changeArrow);
+  };
+
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
           <TableCell className={styles.tableHeader}>
-            <Chip label={headCell.label} className={classes.tableHeaderBTN} />
-            <IconButton>
-              <ArrowDownward className={styles.tableHeaderIcon} />
-            </IconButton>
+            <Paper
+              elevation={0}
+              className={classes.tableHeaderBTN}
+              onClick={handleSort}
+            >
+              {headCell.label}
+              <IconButton>
+                {changeArrow === false ? (
+                  <ArrowDownward
+                    className={styles.tableHeaderIcon}
+                    onClick={handleSort}
+                  />
+                ) : (
+                  <ArrowUpward
+                    className={styles.tableHeaderIcon}
+                    onClick={handleSort}
+                  />
+                )}
+              </IconButton>
+            </Paper>
           </TableCell>
         ))}
       </TableRow>
@@ -171,90 +196,93 @@ function EnhancedTableToolbar() {
 
 export default function LocationDataTable() {
   const [page, setPage] = React.useState(0);
+  const classes = useStyles();
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
 
   return (
-    <div style={{ width: '100%' }}>
-      <Box sx={{ width: '100%' }}>
-        <Paper
-          sx={{ width: '100%', mb: 2, p: 4 }}
-          className={styles.allLocationTable}
-        >
-          <EnhancedTableToolbar />
-          <TableContainer>
-            <Table
-              sx={{
-                [`& .${tableCellClasses.root}`]: {
-                  borderBottom: 'none'
-                },
-                minWidth: 750,
-                marginTop: '20px',
-                overflow: 'visible'
-              }}
-              aria-labelledby="tableTitle"
-            >
-              <EnhancedTableHead />
-              <TableBody>
-                {rows.map((row, index) => {
-                  return (
-                    <TableRow
-                      tabIndex={-1}
-                      key={row.location}
-                      style={
-                        index % 2
-                          ? { background: '#F9F9F9' }
-                          : { background: 'white' }
-                      }
+    <Box sx={{ width: '100%' }}>
+      <Paper
+        sx={{ width: '100%', mb: 2, p: 4 }}
+        className={styles.allLocationTable}
+      >
+        <EnhancedTableToolbar />
+        <TableContainer>
+          <Table
+            sx={{
+              [`& .${tableCellClasses.root}`]: {
+                borderBottom: 'none'
+              },
+              minWidth: 750,
+              marginTop: '20px',
+              overflow: 'visible'
+            }}
+            aria-labelledby="tableTitle"
+          >
+            <EnhancedTableHead />
+            <TableBody>
+              {rows.map((row, index) => {
+                return (
+                  <TableRow
+                    tabIndex={-1}
+                    key={row.location}
+                    style={
+                      index % 2
+                        ? { background: '#F9F9F9' }
+                        : { background: 'white' }
+                    }
+                  >
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      padding="none"
+                      align="left"
+                      sx={{ padding: '20px' }}
                     >
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        padding="none"
-                        align="left"
-                        sx={{ padding: '20px' }}
-                      >
-                        <Link to="/" className={styles.linkToLocation}>
-                          {row.location}
-                        </Link>
+                      <Link to="/" className={styles.linkToLocation}>
+                        {row.location}
+                      </Link>
+                    </TableCell>
+                    <TableCell align="left">{row.address}</TableCell>
+                    <TableCell align="left">{row.city}</TableCell>
+                    <TableCell align="left">{row.state}</TableCell>
+                    <TableCell align="left">{row.zip}</TableCell>
+                    {row.status === 'Online' ? (
+                      <TableCell align="left">
+                        <p className={styles.online}> {row.status}</p>
                       </TableCell>
-                      <TableCell align="left">{row.address}</TableCell>
-                      <TableCell align="left">{row.city}</TableCell>
-                      <TableCell align="left">{row.state}</TableCell>
-                      <TableCell align="left">{row.zip}</TableCell>
-                      {row.status === 'Online' ? (
-                        <TableCell align="left">
-                          <p className={styles.online}> {row.status}</p>
-                        </TableCell>
-                      ) : null}
-                      {row.status === 'Offline' ? (
-                        <TableCell align="left">
-                          <p className={styles.offline}> {row.status}</p>
-                        </TableCell>
-                      ) : null}
-                      {row.status === 'Trouble' ? (
-                        <TableCell align="left">
-                          <p className={styles.trouble}> {row.status}</p>
-                        </TableCell>
-                      ) : null}
-                      <TableCell align="left">{row.emergence}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Pagination
-            count={5}
-            shape="rounded"
-            className={styles.pagination}
-            onChange={handleChangePage}
-            page={page}
-          />
-        </Paper>
-      </Box>
-    </div>
+                    ) : null}
+                    {row.status === 'Offline' ? (
+                      <TableCell align="left">
+                        <p className={styles.offline}> {row.status}</p>
+                      </TableCell>
+                    ) : null}
+                    {row.status === 'Trouble' ? (
+                      <TableCell align="left">
+                        <p className={styles.trouble}> {row.status}</p>
+                      </TableCell>
+                    ) : null}
+                    <TableCell align="left">{row.emergence}</TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+          <div>
+            <div className={styles.pagination}>1-10 of 25 </div>
+            <Pagination
+              count={5}
+              shape="rounded"
+              color="primary"
+              className={classes.pagination}
+              onChange={handleChangePage}
+              page={page}
+            />
+          </div>
+        </TableContainer>
+      </Paper>
+    </Box>
   );
 }

@@ -7,10 +7,10 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
+import AllEquipment from 'modules/equipment/component/AllEquipment';
 import React, { useState } from 'react';
 // import DashboardRouter from 'router/DashboardRouter';
 import useBreakpoint from 'utils/useBreakpoint.js';
-import AllLocation from '../../location/component/AllLocation';
 import styles from './Console.module.css';
 import DrawerList from './DrawerList';
 
@@ -202,7 +202,7 @@ export default function Console() {
           <DrawerList />
         </Drawer>
         <Main open={open} style={{ padding: 0 }}>
-          <AllLocation />
+          <AllEquipment />
         </Main>
       </Box>
     </div>

@@ -1,4 +1,3 @@
-import { purple } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const customTheme = createTheme({
@@ -23,7 +22,7 @@ const customTheme = createTheme({
   typography: {
     htmlFontSize: 14, // Fonts & HTML body MUST be set in the static HTML
     fontFamily: 'sans-serif',
-    fontSize: 14,
+    fontSize: 13,
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
@@ -31,10 +30,11 @@ const customTheme = createTheme({
     h1: {
       fontFamily: 'sans-serif',
       fontWeight: 'bold',
-      fontSize: '2.857rem',
+      padding: '20px',
+      fontSize: '20px',
+      color: '#4A4A4A',
       lineHeight: '3.5rem',
-      letterSpacing: '-0.01562em',
-      color: purple[500]
+      letterSpacing: '-0.01562em'
     }
   }
 });

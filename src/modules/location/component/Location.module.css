@@ -77,7 +77,6 @@
     font-weight:900 !important;
     padding-top:10px !important;
     padding-bottom:10px !important;
-    padding-left: 5px !important;
 }
 .tableHeaderBTN{
     color: #000 !important;
@@ -121,11 +120,14 @@
     border-radius: 20px;
     color: white;
     padding-left:12px;
-   padding-top: 2px;
+    padding-top: 2px;
 }
 .pagination{
-    float: right;
-    color: #5346A0;
+    float: left;
+    padding-left:25px ;
+    color: gray;
+    font-size:16px;
+    margin-top: 20px;
 }
 .linkToLocation{
     text-decoration: none;

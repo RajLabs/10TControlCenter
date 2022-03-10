@@ -1,0 +1,47 @@
+.headerAlignment{
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 65px ;
+    background-color: #EFEFEF;
+}
+.card{
+    background-color: #4962B6 !important;
+    border-radius: 0% !important;
+    color: white !important;
+    box-shadow: none !important;
+}
+.headerContent{
+      display: inline;
+}
+.headerIcon{
+  display: flex;
+    width: 60px;
+    padding: 25px;
+    border-right:2px solid #3650A6;
+   display: inline;
+}
+.equipmentDetails{
+     display: inline;
+}
+.header{
+    padding: 30px 30px 2px 50px;
+    font-size: 20px !important;
+    color: #4A4A4A;
+}
+.box{
+    padding: 2px 30px 10px 50px;
+}
+.equipmentType{
+ border-left: 3px solid #5346A0;
+ font-size: 12px;
+}
+.tableHeader{
+    font-size: 11px;
+    color: #707070;
+}
+.tableBody{
+    font-size: 11px;
+    font-weight: 600;
+    color: #4A4C62;
+    padding-top:8px ;
+}
