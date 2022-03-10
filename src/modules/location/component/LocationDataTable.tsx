@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {
   Autocomplete,
   Button,
+  Chip,
   IconButton,
   InputBase,
   Pagination,
@@ -16,6 +17,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { makeStyles } from '@mui/styles';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { location, rows } from '../LocationSlice';
@@ -82,18 +84,42 @@ const headCells: readonly HeadCell[] = [
     label: 'e911'
   }
 ];
-
+const useStyles = makeStyles({
+  root: {
+    '& .MuiOutlinedInput-root': {
+      maxHeight: '35px',
+      padding: 0,
+      fontSize: '15px'
+    }
+  },
+  searchBar: {
+    ml: 1,
+    flex: 1,
+    fontSize: '15px',
+    paddingLeft: '5px'
+  },
+  filter: {
+    float: 'left',
+    marginTop: '8px'
+  },
+  tableHeaderBTN: {
+    color: '#000',
+    textTransform: 'capitalize',
+    backgroundColor: 'transparent',
+    fontWeight: 500
+  }
+});
 function EnhancedTableHead() {
+  const classes = useStyles();
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
           <TableCell className={styles.tableHeader}>
-            <Button className={styles.tableHeaderBTN}>
-              {headCell.label}
-              &nbsp;
+            <Chip label={headCell.label} className={classes.tableHeaderBTN} />
+            <IconButton>
               <ArrowDownward className={styles.tableHeaderIcon} />
-            </Button>
+            </IconButton>
           </TableCell>
         ))}
       </TableRow>
@@ -102,30 +128,26 @@ function EnhancedTableHead() {
 }
 
 function EnhancedTableToolbar() {
+  const classes = useStyles();
   return (
     <section style={{}}>
-      <strong style={{ float: 'left', marginTop: '10px' }}>
-        {' '}
-        Filter &nbsp;{' '}
-      </strong>
+      <strong className={classes.filter}> Filter &nbsp; </strong>
       <div className={styles.locationSearch}>
         <InputBase
-          sx={{ ml: 1, flex: 1 }}
+          className={classes.searchBar}
           placeholder="Location Name / Address"
           inputProps={{ 'aria-label': 'search' }}
         />
         <IconButton type="submit" aria-label="search">
-          <SearchIcon color="primary" />
+          <SearchIcon color="primary" sx={{ paddingBottom: '5px' }} />
         </IconButton>
       </div>
       <div className={styles.city}>
         <Autocomplete
-          size="small"
           options={location}
           getOptionLabel={option => option}
-          renderInput={params => (
-            <TextField {...params} placeholder="City" style={{ padding: 0 }} />
-          )}
+          className={classes.root}
+          renderInput={params => <TextField {...params} placeholder="City" />}
         />
       </div>
       <div className={styles.city}>
@@ -133,14 +155,15 @@ function EnhancedTableToolbar() {
           size="small"
           options={location}
           getOptionLabel={option => option}
+          className={classes.root}
           renderInput={params => <TextField {...params} placeholder="State" />}
         />
       </div>
       <Button variant="contained" className={styles.addBTN}>
-        +Add
+        <strong> +</strong> &nbsp; Add
       </Button>
       <Button variant="contained" className={styles.addLocation}>
-        +Add Location
+        <strong> +</strong> &nbsp; Add Location
       </Button>
     </section>
   );
@@ -203,17 +226,17 @@ export default function LocationDataTable() {
                       <TableCell align="left">{row.zip}</TableCell>
                       {row.status === 'Online' ? (
                         <TableCell align="left">
-                          <div className={styles.online}> {row.status}</div>
+                          <p className={styles.online}> {row.status}</p>
                         </TableCell>
                       ) : null}
                       {row.status === 'Offline' ? (
                         <TableCell align="left">
-                          <div className={styles.offline}> {row.status}</div>
+                          <p className={styles.offline}> {row.status}</p>
                         </TableCell>
                       ) : null}
                       {row.status === 'Trouble' ? (
                         <TableCell align="left">
-                          <div className={styles.trouble}> {row.status}</div>
+                          <p className={styles.trouble}> {row.status}</p>
                         </TableCell>
                       ) : null}
                       <TableCell align="left">{row.emergence}</TableCell>

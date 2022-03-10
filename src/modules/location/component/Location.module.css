@@ -1,7 +1,7 @@
 .sidebarMenuAlignment{
     width: 100%;
     box-sizing: border-box;
-    padding: 130px 30px 0 30px;
+    padding: 100px 30px 0 30px;
     background-color: #EFEFEF;
 }
 .searchBar{
@@ -56,17 +56,18 @@
     float: left;
     border: 1px solid #ccc9c9 !important; 
     border-radius: 5px;
-    height: 42px !important;
+    height: 35px !important;
 } 
 .addBTN{
-    text-transform: capitalize;
+    text-transform: capitalize !important;
     float: left;
     margin-left: 5px !important;
-    height: 41px;
+    height: 35px;
     background-color: #5346A0 !important;
 } 
 .addLocation{
-    text-transform: capitalize;
+    height: 35px;
+    text-transform: capitalize !important;
     float: right !important;
     background-color: #565656!important;
     border-radius: 20px !important;
@@ -76,10 +77,12 @@
     font-weight:900 !important;
     padding-top:10px !important;
     padding-bottom:10px !important;
+    padding-left: 5px !important;
 }
 .tableHeaderBTN{
     color: #000 !important;
     text-transform: capitalize !important;
+    font-size: small;
     font-weight: 600;
 }
 .tableHeaderBTN:hover{
@@ -91,6 +94,7 @@
     font-weight: 600;
 }
 .online{
+    margin: 0% !important;
     background-color: #50840B !important;
     width: 70px;
     height: 28px !important;
@@ -100,6 +104,7 @@
     padding-top: 2px;
 }
 .trouble{
+    margin: 0% !important;
     background-color: #DFD800 !important;
     width: 70px;
     height: 28px !important;
@@ -109,6 +114,7 @@
     padding-top: 2px;
 }
 .offline{
+    margin: 0% !important;
     background-color: #E50505 !important;
     width: 70px;
     height: 28px !important;

@@ -2,8 +2,8 @@
      font-size: 15px;
 }
 .normalization{
-     padding: 0;
-     margin: 0;
+     padding: 0 !important;
+     margin: 0 !important;
 }
 .notificationIcon{
      color: #707070;
@@ -52,10 +52,10 @@
 .accordionSummary{
      height: 60px !important;
 }
-
 .accordionSummary:hover{
      background-color: #F5F8FD;
      color: #5346A0;
+     border-left: 3px solid #5346A0;
 } 
 .accordionSummary:hover .drawerListIcon{
      color: #5346A0;
@@ -73,16 +73,13 @@
      color: #4d4a4a;
      text-decoration: none;
 }
-.routerLink:hover {
-   color: #5346A0;
-}
 .dashboard{
      height: 60px;
 }
 .dashboard:hover {
    color: #5346A0;
    background-color: #F5F8FD;
-
+border-left: 3px solid #5346A0;
 }
 .listItemText{
      padding: 10px 20px 10px 10px;

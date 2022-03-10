@@ -83,13 +83,13 @@ export default function DrawerList() {
             <ListItemIcon>
               <Router className={styles.drawerListIcon} />
             </ListItemIcon>
-            <ListItemText>Equipments</ListItemText>
+            <ListItemText>Equipment</ListItemText>
           </AccordionSummary>
           <AccordionDetails className={styles.normalization}>
             <Link to="/allequipment" className={styles.routerLink}>
               <AccordionSummary className={styles.accordionSummary}>
                 <ListItemText>AE</ListItemText>
-                <ListItemText> All Equipments</ListItemText>
+                <ListItemText> All Equipment</ListItemText>
               </AccordionSummary>
             </Link>
             <Link to="/createequipment" className={styles.routerLink}>
