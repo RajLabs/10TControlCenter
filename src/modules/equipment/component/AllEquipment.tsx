@@ -9,47 +9,47 @@ export default function AllEquipment() {
   return (
     <div className={styles.headerAlignment}>
       <Card className={styles.card}>
+        <div className={styles.headerContent}>
         <div className={styles.headerIcon}>
           <ArrowBackIosIcon className={styles.arrowBackIcon} />
-          <div>
-            <div className={styles.equipmentDetails}>
+        </div>
+        <div className={styles.equipmentDetails}>
               <Grid container>
-                <Grid item xs={3} md={3} lg={3}>
-                  <Typography>Location Details</Typography>
-                  <Typography>
+                <Grid item xs={3} md={3} lg={4}>
+                  <div style={{fontSize:"20px"}}>Location Details</div>
+                  <div>
                     Starbucks 6966 (4605 E Chandler Blvd - Phoenix, AZ)
-                  </Typography>
+                  </div>
                 </Grid>
                 <Grid item xs={2} md={2} lg={2}>
-                  <Typography>Address</Typography>
-                  <Typography>4605 E. Chandler Blvd. A</Typography>
+                  <div>Address</div>
+                  <div>4605 E. Chandler Blvd. A</div>
                 </Grid>
                 <Grid item xs={5} md={5} lg={5}>
                   <Grid container>
                     <Grid item xs={3} md={3} lg={3}>
-                      <Typography>City</Typography>
-                      <Typography>Phoenix</Typography>
+                      <div>City</div>
+                      <div>Phoenix</div>
                     </Grid>
                     <Grid item xs={3} md={3} lg={3}>
-                      <Typography>State</Typography>
-                      <Typography>AZ</Typography>
+                      <div>State</div>
+                      <div>AZ</div>
                     </Grid>
                     <Grid item xs={3} md={3} lg={3}>
-                      <Typography>Zip</Typography>
-                      <Typography>85048</Typography>
+                      <div>Zip</div>
+                      <div>85048</div>
                     </Grid>
                     <Grid item xs={3} md={3} lg={3}>
-                      <Typography>e911</Typography>
-                      <Typography>Off</Typography>
+                      <div>e911</div>
+                      <div>Off</div>
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item xs={2} md={2} lg={2}>
+                <Grid item xs={2} md={2} lg={1}>
                   <p className={styles.online}> Online</p>
                 </Grid>
               </Grid>
-            </div>
-          </div>
+        </div>
         </div>
       </Card>
       <Typography>

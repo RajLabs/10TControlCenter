@@ -1,41 +1,49 @@
+import { Button, Paper, Table, TableCell, TableRow } from '@mui/material';
 import React from 'react';
-import { Table, TableCell, TableRow } from '@mui/material';
+import styles from './equipment.module.css';
 
 export default function EquipmentDID() {
   return (
-    <section>
-      <Table>
+    <Paper className={styles.didCard}>
+      <header className={styles.didHeader} >
+        <div >DID&apos;s</div>
+        <Button className={styles.addBtn}>Add DID&apos;s</Button>
+      </header>
+      <Table className={styles.didTable}>
         <TableRow>
-          <TableCell>
+          <TableCell className={styles.didDetails}>
             <div>Phone Number</div>
-            <div>18188358855</div>
+            <p>18188358855</p>
           </TableCell>
-          <TableCell>
+          <TableCell className={styles.didDetails}>
             <div>Last Seen Online</div>
-            <div>10/02/2020 12:05:20 am</div>
-          </TableCell>
-          <TableCell>
+            <p>10/02/2020 12:05:20 am</p>
+            </TableCell>
+          <TableCell className={styles.didDetails}>
             <div>Description</div>
-            <div>Voice Line 1</div>
+             <p>Voice Line 1</p>
           </TableCell>
-          <TableCell>
+          <TableCell className={styles.didDetails}>
             <div>Equipment MAC</div>
-            <div>C0:74:AD:2B:36:E0</div>
+             <p>C0:74:AD:2B:36:E0</p>
           </TableCell>
-          <TableCell>
+          <TableCell className={styles.didDetails}>
             <div>Device Port</div>
-            <div>1</div>
+            <p>1</p>
           </TableCell>
-          <TableCell>
+          <TableCell className={styles.didDetails}>
             <div>Temp Inbound</div>
-            <div>-</div>
+            <p>-</p>
+          </TableCell>
+          <TableCell className={styles.didDetails}>
+            <div>e911</div>
+             <p>-</p>
           </TableCell>
           <TableCell>
-            <div>e911</div>
-            <div>-</div>
+            <div className={styles.online}> Online</div>
           </TableCell>
         </TableRow>
       </Table>
-    </section>
+      </Paper>
   );
 }

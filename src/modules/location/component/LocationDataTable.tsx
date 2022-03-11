@@ -1,12 +1,6 @@
-import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
-import SearchIcon from '@mui/icons-material/Search';
 import {
-  Autocomplete,
-  Button,
-  IconButton,
-  InputBase,
-  Pagination,
-  TextField
+  TablePagination,
+  TableSortLabel
 } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -16,11 +10,12 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { makeStyles } from '@mui/styles';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { location, rows } from '../LocationSlice';
+import TableToolbar from './TableToolbar';
+import { rows } from '../LocationSlice';
 import styles from './Location.module.css';
+
 
 interface Data {
   location: string;
@@ -29,13 +24,48 @@ interface Data {
   state: string;
   zip: number;
   status: string;
-  emg: string;
+ emergence: string;
 }
 interface HeadCell {
   disablePadding: boolean;
   id: keyof Data;
   label: string;
   numeric: boolean;
+}
+
+function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+type Order = 'asc' | 'desc';
+
+function getComparator<Key extends keyof any>(
+  order: Order,
+  orderBy: Key,
+): (
+  a: { [key in Key]: number | string },
+  b: { [key in Key]: number | string },
+) => number {
+  return order === 'desc'
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+}
+
+function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
+  const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
+  stabilizedThis.sort((a, b) => {
+    const order = comparator(a[0], b[0]);
+    if (order !== 0) {
+      return order;
+    }
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map((el) => el[0]);
 }
 
 const headCells: readonly HeadCell[] = [
@@ -76,75 +106,42 @@ const headCells: readonly HeadCell[] = [
     label: 'Status'
   },
   {
-    id: 'emg',
+    id: 'emergence',
     numeric: true,
     disablePadding: false,
     label: 'e911'
   }
 ];
-const useStyles = makeStyles({
-  root: {
-    '& .MuiOutlinedInput-root': {
-      maxHeight: '35px',
-      padding: 0,
-      fontSize: '15px'
-    }
-  },
-  searchBar: {
-    ml: 1,
-    flex: 1,
-    fontSize: '15px',
-    paddingLeft: '5px'
-  },
-  filter: {
-    float: 'left',
-    marginTop: '8px'
-  },
-  tableHeaderBTN: {
-    textTransform: 'capitalize',
-    backgroundColor: 'transparent',
-    fontWeight: 500,
-    cursor: 'pointer'
-  },
-  pagination: {
-    float: 'right',
-    paddingTop: '20px'
-  }
-});
+interface EnhancedTableProps {
+  onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
+  order: Order;
+  orderBy: string;
+}
 
-function EnhancedTableHead() {
-  const classes = useStyles();
-  const [changeArrow, setChangeArrow] = React.useState(false);
-
-  const handleSort = () => {
-    setChangeArrow(!changeArrow);
-  };
+function EnhancedTableHead(props: EnhancedTableProps) {
+   const {order, orderBy, onRequestSort } =
+    props;
+  const createSortHandler =
+    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
+      onRequestSort(event, property);
+    };
 
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
-          <TableCell className={styles.tableHeader}>
-            <Paper
-              elevation={0}
-              className={classes.tableHeaderBTN}
-              onClick={handleSort}
+          <TableCell className={styles.tableHeader}
+              key={headCell.id}
+            sortDirection={orderBy === headCell.id ? order : false}
+          >
+           <TableSortLabel
+              active={orderBy === headCell.id}
+              direction={orderBy === headCell.id ? order : 'asc'}
+              onClick={createSortHandler(headCell.id)}
+              aria-hidden="false"
             >
               {headCell.label}
-              <IconButton>
-                {changeArrow === false ? (
-                  <ArrowDownward
-                    className={styles.tableHeaderIcon}
-                    onClick={handleSort}
-                  />
-                ) : (
-                  <ArrowUpward
-                    className={styles.tableHeaderIcon}
-                    onClick={handleSort}
-                  />
-                )}
-              </IconButton>
-            </Paper>
+            </TableSortLabel>
           </TableCell>
         ))}
       </TableRow>
@@ -152,54 +149,28 @@ function EnhancedTableHead() {
   );
 }
 
-function EnhancedTableToolbar() {
-  const classes = useStyles();
-  return (
-    <section style={{}}>
-      <strong className={classes.filter}> Filter &nbsp; </strong>
-      <div className={styles.locationSearch}>
-        <InputBase
-          className={classes.searchBar}
-          placeholder="Location Name / Address"
-          inputProps={{ 'aria-label': 'search' }}
-        />
-        <IconButton type="submit" aria-label="search">
-          <SearchIcon color="primary" sx={{ paddingBottom: '5px' }} />
-        </IconButton>
-      </div>
-      <div className={styles.city}>
-        <Autocomplete
-          options={location}
-          getOptionLabel={option => option}
-          className={classes.root}
-          renderInput={params => <TextField {...params} placeholder="City" />}
-        />
-      </div>
-      <div className={styles.city}>
-        <Autocomplete
-          size="small"
-          options={location}
-          getOptionLabel={option => option}
-          className={classes.root}
-          renderInput={params => <TextField {...params} placeholder="State" />}
-        />
-      </div>
-      <Button variant="contained" className={styles.addBTN}>
-        <strong> +</strong> &nbsp; Add
-      </Button>
-      <Button variant="contained" className={styles.addLocation}>
-        <strong> +</strong> &nbsp; Add Location
-      </Button>
-    </section>
-  );
-}
-
 export default function LocationDataTable() {
+  const [order, setOrder] = React.useState<Order>('asc');
+  const [orderBy, setOrderBy] = React.useState<keyof Data>('location');
   const [page, setPage] = React.useState(0);
-  const classes = useStyles();
+   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  // const classes = useStyles();
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
+  };
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+   const handleRequestSort = (
+    event: React.MouseEvent<unknown>,
+    property: keyof Data,
+  ) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
   };
 
   return (
@@ -208,7 +179,7 @@ export default function LocationDataTable() {
         sx={{ width: '100%', mb: 2, p: 4 }}
         className={styles.allLocationTable}
       >
-        <EnhancedTableToolbar />
+        <TableToolbar />
         <TableContainer>
           <Table
             sx={{
@@ -221,9 +192,15 @@ export default function LocationDataTable() {
             }}
             aria-labelledby="tableTitle"
           >
-            <EnhancedTableHead />
+            <EnhancedTableHead
+              order={order}
+              orderBy={orderBy}
+              onRequestSort={handleRequestSort}
+              />
             <TableBody>
-              {rows.map((row, index) => {
+              {stableSort(rows, getComparator(order, orderBy))
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => {
                 return (
                   <TableRow
                     tabIndex={-1}
@@ -271,7 +248,16 @@ export default function LocationDataTable() {
             </TableBody>
           </Table>
           <div>
-            <div className={styles.pagination}>1-10 of 25 </div>
+              <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+            {/* <div className={styles.pagination}>1-10 of 25 </div>
             <Pagination
               count={5}
               shape="rounded"
@@ -279,7 +265,7 @@ export default function LocationDataTable() {
               className={classes.pagination}
               onChange={handleChangePage}
               page={page}
-            />
+            /> */}
           </div>
         </TableContainer>
       </Paper>

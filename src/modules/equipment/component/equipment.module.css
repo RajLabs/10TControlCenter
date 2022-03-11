@@ -10,38 +10,113 @@
     color: white !important;
     box-shadow: none !important;
 }
-.headerContent{
-      display: inline;
+.header{
+    width: 100%;
 }
 .headerIcon{
-  display: flex;
+  float: left;
     width: 60px;
-    padding: 25px;
+    padding: 25px 20px 20px 23px;
     border-right:2px solid #3650A6;
-   display: inline;
 }
 .equipmentDetails{
-     display: inline;
+    width: 96%;
+    float: left;
+    padding: 15px 0 0 10px;
 }
 .header{
-    padding: 30px 30px 2px 50px;
+    padding: 30px 30px 2px 60px;
     font-size: 20px !important;
     color: #4A4A4A;
 }
 .box{
-    padding: 2px 30px 10px 50px;
+    padding: 2px 30px 10px 60px;
 }
 .equipmentType{
- border-left: 3px solid #5346A0;
+ border-left: 1px solid #10054b;
  font-size: 12px;
 }
 .tableHeader{
-    font-size: 11px;
     color: #707070;
+    font-size: 11px !important;
 }
 .tableBody{
-    font-size: 11px;
-    font-weight: 600;
+    font-weight: 600 !important;
     color: #4A4C62;
     padding-top:8px ;
+    font-size: 11px !important;
+}
+.didHeader{
+    background-color: #E5EEFF;
+    height: 50px;
+    width: 100%;
+    clear: both;
+}
+.didHeader div{
+    float: left;
+    font-size: medium;
+    font-weight: 700;
+    padding: 15px 10px 0px 19px;
+}
+.addBtn{
+    float: right;
+    height: 25px !important;
+    margin-right: 2% !important;
+    font-size: 11px !important;
+    background-color: #5346A0 !important;
+    color: white !important;
+    border-radius: 20px !important;
+    margin-top: 8px !important;
+    text-transform: capitalize !important;
+    width: 90px;
+}
+.didDetails >div{
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    color: black;
+}
+.didDetails >p{
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.didTable{
+    background-color: #F8FAFF;
+}
+.didCard{
+    box-shadow: none;
+}
+.online{
+    background-color: #50840B !important;
+    width: 70px;
+    height: 22px !important;
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.trouble{
+    margin: 0% !important;
+    background-color: #DFD800 !important;
+    width: 70px;
+    height: 22px !important;
+    border-radius: 20px;
+    color: black;
+   padding-left:14px;
+    font-size: 13px;
+    padding-top: 2px;
+}
+.offline{
+    margin: 0% !important;
+    background-color: #E50505 !important;
+    width: 70px;
+    height: 22px !important;
+    border-radius: 20px;
+    color: white;
+  padding-left:14px;
+    font-size: 13px;
+    padding-top: 2px;
 }
