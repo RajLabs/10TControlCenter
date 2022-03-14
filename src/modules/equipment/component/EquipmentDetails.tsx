@@ -10,54 +10,52 @@ export default function EquipmentDetails() {
           <Table>
             <TableRow>
               <TableCell>
-                <Typography className={styles.tableHeader}>
+                <Typography variant="h2" color="secondary-light">
                   Equipment Type
                 </Typography>
-                <Typography className={styles.tableBody}>
-                  Grandstream HT812 (ATA)
-                </Typography>
+                <Typography variant="body2">Grandstream HT812 (ATA)</Typography>
               </TableCell>
               <TableCell>
-                <Typography className={styles.tableHeader}>
+                <Typography variant="h2" color="secondary-light">
                   Last Seen Online
                 </Typography>
-                <Typography className={styles.tableBody}>
-                  02/22/2021 7:00:42 pm
-                </Typography>
+                <Typography variant="body2">02/22/2021 7:00:42 pm</Typography>
               </TableCell>
               <TableCell>
-                <Typography className={styles.tableHeader}>
+                <Typography variant="h2" color="secondary-light">
                   Description
                 </Typography>
-                <Typography className={styles.tableBody}>-</Typography>
+                <Typography variant="body2">-</Typography>
               </TableCell>
               <TableCell>
-                <Typography className={styles.tableHeader}>Mac</Typography>
-                <Typography className={styles.tableBody}>
-                  C0:74:AD:26:49:4A
+                <Typography variant="h2" color="secondary-light">
+                  Mac
                 </Typography>
+                <Typography variant="body2">C0:74:AD:26:49:4A</Typography>
               </TableCell>
               <TableCell>
-                <Typography className={styles.tableHeader}>Serial</Typography>
-                <Typography className={styles.tableBody}>
-                  22EAU1NL5126494A
+                <Typography variant="h2" color="secondary-light">
+                  Serial
                 </Typography>
+                <Typography variant="body2">22EAU1NL5126494A</Typography>
               </TableCell>
               <TableCell>
-                <Typography className={styles.tableHeader}>
+                <Typography variant="h2" color="secondary-light">
                   Power State
                 </Typography>
-                <Typography className={styles.tableBody}>-</Typography>
+                <Typography variant="body2">-</Typography>
               </TableCell>
               <TableCell>
-                <Typography className={styles.tableHeader}>
+                <Typography variant="h2" color="secondary-light">
                   Battery State
                 </Typography>
-                <Typography className={styles.tableBody}>-</Typography>
+                <Typography variant="body2">-</Typography>
               </TableCell>
               <TableCell>
-                <Typography className={styles.tableHeader}>Status</Typography>
-                <Typography className={styles.tableBody}>-</Typography>
+                <Typography variant="h2" color="secondary-light">
+                  Status
+                </Typography>
+                <Typography variant="body2">-</Typography>
               </TableCell>
             </TableRow>
           </Table>

@@ -1,7 +1,4 @@
-import {
-  TablePagination,
-  TableSortLabel
-} from '@mui/material';
+import { Pagination, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -10,12 +7,13 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { makeStyles } from '@mui/styles';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import TableToolbar from './TableToolbar';
 import { rows } from '../LocationSlice';
 import styles from './Location.module.css';
-
+import TableHeader from './TableHeader';
+import TableToolbar from './TableToolbar';
 
 interface Data {
   location: string;
@@ -24,48 +22,13 @@ interface Data {
   state: string;
   zip: number;
   status: string;
- emergence: string;
+  emergence: string;
 }
 interface HeadCell {
   disablePadding: boolean;
   id: keyof Data;
   label: string;
   numeric: boolean;
-}
-
-function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
-type Order = 'asc' | 'desc';
-
-function getComparator<Key extends keyof any>(
-  order: Order,
-  orderBy: Key,
-): (
-  a: { [key in Key]: number | string },
-  b: { [key in Key]: number | string },
-) => number {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
-  const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
 }
 
 const headCells: readonly HeadCell[] = [
@@ -112,37 +75,20 @@ const headCells: readonly HeadCell[] = [
     label: 'e911'
   }
 ];
-interface EnhancedTableProps {
-  onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-  order: Order;
-  orderBy: string;
-}
 
-function EnhancedTableHead(props: EnhancedTableProps) {
-   const {order, orderBy, onRequestSort } =
-    props;
-  const createSortHandler =
-    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
-      onRequestSort(event, property);
-    };
+const useStyles = makeStyles({
+  pagination: {
+    float: 'right',
+    paddingTop: '20px'
+  }
+});
 
+function EnhancedTableHead() {
   return (
     <TableHead>
       <TableRow>
         {headCells.map(headCell => (
-          <TableCell className={styles.tableHeader}
-              key={headCell.id}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-           <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
-              aria-hidden="false"
-            >
-              {headCell.label}
-            </TableSortLabel>
-          </TableCell>
+          <TableHeader headCell={headCell} />
         ))}
       </TableRow>
     </TableHead>
@@ -150,28 +96,17 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 }
 
 export default function LocationDataTable() {
-  const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof Data>('location');
-  const [page, setPage] = React.useState(0);
-   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  // const classes = useStyles();
-
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-   const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
-    property: keyof Data,
-  ) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
+  // const [noOfPage, setNoOfPage] = React.useState(1);
+  const [currentPage] = React.useState(1);
+  const [rowsPerPage] = React.useState(5);
+  const indexOfLastPage = currentPage * rowsPerPage;
+  const indexOfFirstPage = indexOfLastPage - rowsPerPage;
+  const totalPage = [];
+  for (let i = 1; i <= Math.ceil(rows.length / 5); i++) {
+    totalPage.push(i);
+  }
+  const count = totalPage.length;
+  const classes = useStyles();
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -192,80 +127,82 @@ export default function LocationDataTable() {
             }}
             aria-labelledby="tableTitle"
           >
-            <EnhancedTableHead
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-              />
+            <EnhancedTableHead />
             <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              {rows
+                .slice(indexOfFirstPage, indexOfLastPage)
                 .map((row, index) => {
-                return (
-                  <TableRow
-                    tabIndex={-1}
-                    key={row.location}
-                    style={
-                      index % 2
-                        ? { background: '#F9F9F9' }
-                        : { background: 'white' }
-                    }
-                  >
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      padding="none"
-                      align="left"
-                      sx={{ padding: '20px' }}
+                  return (
+                    <TableRow
+                      tabIndex={-1}
+                      key={row.location}
+                      style={
+                        index % 2
+                          ? { background: '#F9F9F9' }
+                          : { background: 'white' }
+                      }
                     >
-                      <Link to="/" className={styles.linkToLocation}>
-                        {row.location}
-                      </Link>
-                    </TableCell>
-                    <TableCell align="left">{row.address}</TableCell>
-                    <TableCell align="left">{row.city}</TableCell>
-                    <TableCell align="left">{row.state}</TableCell>
-                    <TableCell align="left">{row.zip}</TableCell>
-                    {row.status === 'Online' ? (
-                      <TableCell align="left">
-                        <p className={styles.online}> {row.status}</p>
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        padding="none"
+                        align="left"
+                        sx={{ padding: '20px' }}
+                      >
+                        <Link to="/" className={styles.linkToLocation}>
+                          <Typography variant="h5"> {row.location}</Typography>
+                        </Link>
                       </TableCell>
-                    ) : null}
-                    {row.status === 'Offline' ? (
                       <TableCell align="left">
-                        <p className={styles.offline}> {row.status}</p>
+                        <Typography variant="h4"> {row.address}</Typography>
                       </TableCell>
-                    ) : null}
-                    {row.status === 'Trouble' ? (
                       <TableCell align="left">
-                        <p className={styles.trouble}> {row.status}</p>
+                        <Typography variant="h4"> {row.city}</Typography>
                       </TableCell>
-                    ) : null}
-                    <TableCell align="left">{row.emergence}</TableCell>
-                  </TableRow>
-                );
-              })}
+                      <TableCell align="left">
+                        <Typography variant="h4"> {row.state}</Typography>
+                      </TableCell>
+                      <TableCell align="left">
+                        <Typography variant="h4"> {row.zip}</Typography>
+                      </TableCell>
+                      {row.status === 'Online' ? (
+                        <TableCell align="left">
+                          <div className={styles.online}>
+                            <Typography variant="subtitle1">Online</Typography>
+                          </div>
+                        </TableCell>
+                      ) : null}
+                      {row.status === 'Offline' ? (
+                        <TableCell align="left">
+                          <div className={styles.offline}>
+                            <Typography variant="subtitle1">Offline</Typography>
+                          </div>
+                        </TableCell>
+                      ) : null}
+                      {row.status === 'Trouble' ? (
+                        <TableCell align="left">
+                          <div className={styles.trouble}>
+                            <Typography variant="subtitle1">Trouble</Typography>
+                          </div>
+                        </TableCell>
+                      ) : null}
+                      <TableCell align="left">
+                        <Typography variant="h4"> {row.emergence}</Typography>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
             </TableBody>
           </Table>
           <div>
-              <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-            {/* <div className={styles.pagination}>1-10 of 25 </div>
+            <div className={styles.pagination}>1-10 of 25 </div>
             <Pagination
-              count={5}
+              count={count}
               shape="rounded"
               color="primary"
               className={classes.pagination}
-              onChange={handleChangePage}
-              page={page}
-            /> */}
+              page={currentPage}
+            />
           </div>
         </TableContainer>
       </Paper>

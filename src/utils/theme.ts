@@ -3,10 +3,30 @@ import { createTheme } from '@mui/material/styles';
 const customTheme = createTheme({
   palette: {
     primary: {
+      light: '#4962b6',
       main: '#5346A0'
     },
     secondary: {
-      main: '#707070'
+      light: '#818181',
+      main: '#565656',
+      dark: '#000'
+    },
+    error: {
+      main: '#E50505'
+    },
+    info: {
+      light: '#F5F8FD',
+      main: '#E5EEFF',
+      dark: '#D3E3FC'
+    },
+    success: {
+      main: '#50840B'
+    },
+    warning: {
+      main: '#DFD800'
+    },
+    background: {
+      default: '#EFEFEF'
     }
   },
   breakpoints: {
@@ -22,19 +42,31 @@ const customTheme = createTheme({
   typography: {
     htmlFontSize: 14, // Fonts & HTML body MUST be set in the static HTML
     fontFamily: 'sans-serif',
-    fontSize: 13,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-    h1: {
-      fontFamily: 'sans-serif',
-      fontWeight: 'bold',
-      padding: '20px',
-      fontSize: '20px',
-      color: '#4A4A4A',
-      lineHeight: '3.5rem',
-      letterSpacing: '-0.01562em'
+    fontSize: 12,
+    body1: {
+      fontSize: '14px'
+    },
+    h2: {
+      fontSize: '11px',
+      color: '#707070'
+    },
+    body2: {
+      fontSize: '12px',
+      fontWeight: 600,
+      color: '#4A4A4E',
+      paddingTop: '8px'
+    },
+    h5: {
+      fontSize: '12px',
+      fontWeight: 600,
+      padding: '4px'
+    },
+    h4: {
+      fontSize: '13px',
+      padding: '4px'
+    },
+    subtitle1: {
+      fontSize: '11px'
     }
   }
 });

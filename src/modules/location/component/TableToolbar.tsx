@@ -1,9 +1,10 @@
 import SearchIcon from '@mui/icons-material/Search';
 import {
-    Autocomplete,
-    Button,
-    IconButton,
-    InputBase, TextField
+  Autocomplete,
+  Button,
+  IconButton,
+  InputBase,
+  TextField
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { location } from '../LocationSlice';
@@ -14,15 +15,29 @@ const useStyles = makeStyles({
     '& .MuiOutlinedInput-root': {
       maxHeight: '35px',
       padding: 0,
-      fontSize: '15px'
+      fontSize: '15px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItem: 'center'
+    },
+    '& input::placeholder': {
+      fontSize: '13px',
+      marginTop: '-10px'
     }
   },
   searchBar: {
     ml: 1,
-    flex: 1,
     fontSize: '15px',
-    paddingLeft: '5px'
+    paddingLeft: '5px',
+    width: '85%',
+    '& input::placeholder': {
+      fontSize: '13px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
   },
+  searchIcon: {},
   filter: {
     float: 'left',
     marginTop: '8px'
@@ -33,9 +48,25 @@ const useStyles = makeStyles({
     fontWeight: 500,
     cursor: 'pointer'
   },
-  pagination: {
-    float: 'right',
-    paddingTop: '20px'
+  locationSearch: {
+    float: 'left',
+    border: '1px solid #ccc9c9 ',
+    borderRadius: '5px',
+    height: ' 35px ',
+    display: 'flex'
+  },
+  city: {
+    float: 'left',
+    width: '100px',
+    display: 'inline-block',
+    marginLeft: '5px',
+    height: '30px',
+    '& input::placeholder': {
+      fontSize: '13px'
+    },
+    '& .MuiOutlinedInput-root': {
+      padding: '6px 4px 6px 6px'
+    }
   }
 });
 
@@ -44,14 +75,18 @@ export default function TableToolbar() {
   return (
     <section style={{}}>
       <strong className={classes.filter}> Filter &nbsp; </strong>
-      <div className={styles.locationSearch}>
+      <div className={classes.locationSearch}>
         <InputBase
           className={classes.searchBar}
           placeholder="Location Name / Address"
           inputProps={{ 'aria-label': 'search' }}
         />
-        <IconButton type="submit" aria-label="search">
-          <SearchIcon color="primary" sx={{ paddingBottom: '5px' }} />
+        <IconButton
+          type="submit"
+          aria-label="search"
+          className={classes.searchIcon}
+        >
+          <SearchIcon color="primary" />
         </IconButton>
       </div>
       <div className={styles.city}>

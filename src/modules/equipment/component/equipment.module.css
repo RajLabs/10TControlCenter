@@ -1,122 +1,101 @@
-.headerAlignment{
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 65px ;
-    background-color: #EFEFEF;
+.headerAlignment {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 65px;
+  background-color: #efefef;
 }
-.card{
-    background-color: #4962B6 !important;
-    border-radius: 0% !important;
-    color: white !important;
-    box-shadow: none !important;
+.card {
+  background-color: #4962b6 !important;
+  border-radius: 0% !important;
+  color: white !important;
+  box-shadow: none !important;
 }
-.header{
-    width: 100%;
+.headerIcon {
+  width: 60px;
+  padding: 25px 20px 20px 23px;
+  border-right: 2px solid #3650a6;
 }
-.headerIcon{
+.equipmentDetails {
+  margin-top: 15px;
+}
+.header {
+  padding: 30px 30px 2px 60px;
+  font-size: 20px !important;
+  color: #4a4a4a;
+}
+.box {
+  padding: 2px 30px 10px 60px;
+}
+.equipmentType {
+  border-left: 1px solid #10054b;
+  font-size: 12px;
+}
+.didHeader {
+  background-color: #e5eeff;
+  height: 50px;
+  width: 100%;
+  clear: both;
+}
+.didHeader div {
   float: left;
-    width: 60px;
-    padding: 25px 20px 20px 23px;
-    border-right:2px solid #3650A6;
+  font-size: medium;
+  font-weight: 700;
+  padding: 15px 10px 0px 19px;
 }
-.equipmentDetails{
-    width: 96%;
-    float: left;
-    padding: 15px 0 0 10px;
+.addBtn {
+  float: right;
+  height: 25px !important;
+  margin-right: 2% !important;
+  font-size: 11px !important;
+  background-color: #5346a0 !important;
+  color: white !important;
+  border-radius: 20px !important;
+  margin-top: 8px !important;
+  text-transform: capitalize !important;
+  width: 90px;
 }
-.header{
-    padding: 30px 30px 2px 60px;
-    font-size: 20px !important;
-    color: #4A4A4A;
+.didTable {
+  background-color: #f8faff;
 }
-.box{
-    padding: 2px 30px 10px 60px;
+.didCard {
+  box-shadow: none;
 }
-.equipmentType{
- border-left: 1px solid #10054b;
- font-size: 12px;
+.online {
+  background-color: #50840b !important;
+  width: 60px;
+  height: 22px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 }
-.tableHeader{
-    color: #707070;
-    font-size: 11px !important;
+.trouble {
+  margin: 0% !important;
+  background-color: #dfd800 !important;
+  width: 70px;
+  height: 22px !important;
+  border-radius: 20px;
+  color: black;
+  padding-left: 14px;
+  font-size: 13px;
+  padding-top: 2px;
 }
-.tableBody{
-    font-weight: 600 !important;
-    color: #4A4C62;
-    padding-top:8px ;
-    font-size: 11px !important;
+.offline {
+  margin: 0% !important;
+  background-color: #e50505 !important;
+  width: 70px;
+  height: 22px !important;
+  border-radius: 20px;
+  color: white;
+  padding-left: 14px;
+  font-size: 13px;
+  padding-top: 2px;
 }
-.didHeader{
-    background-color: #E5EEFF;
-    height: 50px;
-    width: 100%;
-    clear: both;
-}
-.didHeader div{
-    float: left;
-    font-size: medium;
-    font-weight: 700;
-    padding: 15px 10px 0px 19px;
-}
-.addBtn{
-    float: right;
-    height: 25px !important;
-    margin-right: 2% !important;
-    font-size: 11px !important;
-    background-color: #5346A0 !important;
-    color: white !important;
-    border-radius: 20px !important;
-    margin-top: 8px !important;
-    text-transform: capitalize !important;
-    width: 90px;
-}
-.didDetails >div{
-    margin-top: 10px;
-    font-size: 11px;
-    font-weight: 500;
-    color: black;
-}
-.didDetails >p{
-    font-size: 12px;
-    font-weight: 700;
-    margin-top: 5px;
-}
-.didTable{
-    background-color: #F8FAFF;
-}
-.didCard{
-    box-shadow: none;
-}
-.online{
-    background-color: #50840B !important;
-    width: 70px;
-    height: 22px !important;
-    border-radius: 20px;
-    color: white;
-    font-size: 13px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.trouble{
-    margin: 0% !important;
-    background-color: #DFD800 !important;
-    width: 70px;
-    height: 22px !important;
-    border-radius: 20px;
-    color: black;
-   padding-left:14px;
-    font-size: 13px;
-    padding-top: 2px;
-}
-.offline{
-    margin: 0% !important;
-    background-color: #E50505 !important;
-    width: 70px;
-    height: 22px !important;
-    border-radius: 20px;
-    color: white;
-  padding-left:14px;
-    font-size: 13px;
-    padding-top: 2px;
+.locationDetails {
+  font-size: 20px !important;
+  padding-left: 4px !important;
+  margin-top: -9px !important;
+  font-weight: 100 !important;
 }

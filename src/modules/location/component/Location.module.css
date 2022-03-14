@@ -1,135 +1,142 @@
-.sidebarMenuAlignment{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 100px 30px 0 30px;
-    background-color: #EFEFEF;
+.sidebarMenuAlignment {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 100px 30px 0 30px;
+  background-color: #efefef;
 }
-.searchBar{
-    float: right;
-    margin-bottom: 40px;
-    padding-right: 5px;
-    background-color: white !important;
-    border-radius: 5px;
+.searchBar {
+  float: right;
+  margin-bottom: 40px;
+  padding-right: 5px;
+  background-color: white !important;
+  border-radius: 5px;
 }
-.searchLocation{
-    float: left;
-    border-radius: 0% !important;
-    height: 42px;
-    color:#5346A0 !important;
+.searchLocation {
+  float: left;
+  border-radius: 0% !important;
+  height: 42px;
+  color: #5346a0 !important;
 }
-.locationSelector{
-    float: left;
-    min-width: 400px;
-    height: 42px;
-    box-sizing: border-box;
-    padding-top: 5px;
+.locationSelector {
+  float: left;
+  min-width: 400px;
+  height: 42px;
+  box-sizing: border-box;
+  padding-top: 5px;
 }
-.locationtable{
-    clear: both;
+.locationtable {
+  clear: both;
 }
-.locationHeader{
-    float: left;
-    margin-bottom: 40px;
+.locationHeader {
+  float: left;
+  margin-bottom: 40px;
 }
-.location{
-    color:#5346A0;
-    font-size: 20px;
-    padding-left: 50px;
+.location {
+  color: #5346a0;
+  font-size: 20px;
+  padding-left: 50px;
 }
-.starbucks{
-    padding-left: 50px;
-    color: gray;
+.starbucks {
+  padding-left: 50px;
+  color: gray;
 }
-.city{
-    float: left;
-    width: 100px;
-    display: inline-block;
-    margin-left: 5px;
-    height: 30px;
+.city {
+  float: left;
+  width: 100px;
+  display: inline-block;
+  margin-left: 5px;
+  height: 30px;
 }
-.allLocationTable{
-    border-top:4px solid #5346A0;
-    border-top-left-radius:7px;
-    border-top-right-radius: 7px;
+.allLocationTable {
+  border-top: 4px solid #5346a0;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
-.locationSearch{
-    float: left;
-    border: 1px solid #ccc9c9 !important; 
-    border-radius: 5px;
-    height: 35px !important;
-} 
-.addBTN{
-    text-transform: capitalize !important;
-    float: left;
-    margin-left: 5px !important;
-    height: 35px;
-    background-color: #5346A0 !important;
-} 
-.addLocation{
-    height: 35px;
-    text-transform: capitalize !important;
-    float: right !important;
-    background-color: #565656!important;
-    border-radius: 20px !important;
+.locationSearch {
+  float: left;
+  border: 1px solid #ccc9c9 !important;
+  border-radius: 5px;
+  height: 35px !important;
 }
-.tableHeader{
-    background-color:#D3E3FC;
-    font-weight:900 !important;
-    padding-top:10px !important;
-    padding-bottom:10px !important;
+.addBTN {
+  text-transform: capitalize !important;
+  float: left;
+  margin-left: 5px !important;
+  height: 35px;
+  background-color: #5346a0 !important;
 }
-.tableHeaderBTN{
-    color: #000 !important;
-    text-transform: capitalize !important;
-    font-size: small;
-    font-weight: 600;
+.addLocation {
+  height: 35px;
+  text-transform: capitalize !important;
+  float: right !important;
+  background-color: #565656 !important;
+  border-radius: 20px !important;
 }
-.tableHeaderBTN:hover{
-    background-color: transparent !important;
+.tableHeader {
+  background-color: #d3e3fc;
+  font-weight: 900 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
-.tableHeaderIcon{
-    color: black;
-    font-size: 18px !important;
-    font-weight: 600;
+.tableHeaderBTN {
+  color: #000 !important;
+  text-transform: capitalize !important;
+  font-size: small;
+  font-weight: 600;
 }
-.online{
-    margin: 0% !important;
-    background-color: #50840B !important;
-    width: 70px;
-    height: 28px !important;
-     border-radius: 20px;
-    color: white;
-    padding-left:13px;
-    padding-top: 2px;
+.tableHeaderBTN:hover {
+  background-color: transparent !important;
 }
-.trouble{
-    margin: 0% !important;
-    background-color: #DFD800 !important;
-    width: 70px;
-    height: 28px !important;
-    border-radius: 20px;
-    color: black;
-    padding-left:9px;
-    padding-top: 2px;
+.tableHeaderIcon {
+  color: black;
+  font-size: 18px !important;
+  font-weight: 600;
 }
-.offline{
-    margin: 0% !important;
-    background-color: #E50505 !important;
-    width: 70px;
-    height: 28px !important;
-    border-radius: 20px;
-    color: white;
-    padding-left:12px;
-    padding-top: 2px;
+.online {
+  margin: 0% !important;
+  background-color: #50840b !important;
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.pagination{
-    float: left;
-    padding-left:25px ;
-    color: gray;
-    font-size:16px;
-    margin-top: 20px;
+.trouble {
+  margin: 0% !important;
+  background-color: #dfd800 !important;
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.linkToLocation{
-    text-decoration: none;
+.offline {
+  margin: 0% !important;
+  background-color: #e50505 !important;
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.pagination {
+  float: left;
+  padding-left: 25px;
+  color: gray;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.linkToLocation {
+  text-decoration: none;
+}
+.sortIcon {
+  font-size: 15px !important;
+  margin-left: 5px !important;
+  margin-bottom: -2px !important;
+}

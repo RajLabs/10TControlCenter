@@ -1,17 +1,12 @@
-import { MoreVert, NotificationsActive } from '@mui/icons-material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Drawer, Grid } from '@mui/material';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { Drawer } from '@mui/material';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
-import Toolbar from '@mui/material/Toolbar';
-import AllEquipment from 'modules/equipment/component/AllEquipment';
+import AllLocation from 'modules/location/component/AllLocation';
 import React, { useState } from 'react';
 // import DashboardRouter from 'router/DashboardRouter';
 import useBreakpoint from 'utils/useBreakpoint.js';
-import styles from './Console.module.css';
+import AppBar from './AppBar';
 import DrawerList from './DrawerList';
 
 const drawerWidth = 250;
@@ -34,38 +29,6 @@ const Main = styled('main', { shouldForwardProp: prop => prop !== 'open' })<{
     marginLeft: 0
   })
 }));
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: prop => prop !== 'open'
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen
-  }),
-  backgroundColor: '#B6121B',
-  [theme.breakpoints.up('md')]: {
-    ...(open && {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: `${drawerWidth}px`,
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
-      })
-    })
-  },
-  [theme.breakpoints.between('sm', 'md')]: {
-    ...(open && {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: `${drawerWidth}px`,
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
-      })
-    })
-  }
-}));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -81,9 +44,6 @@ export default function Console() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const point = useBreakpoint();
 
-  const handleDrawerOpen = () => {
-    setOpen(!open);
-  };
   const toggleDrawer = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -92,57 +52,11 @@ export default function Console() {
     <div>
       <Box sx={{ display: 'flex' }}>
         <AppBar
-          position="fixed"
           open={open}
-          style={{ backgroundColor: 'white' }}
-        >
-          <Toolbar>
-            <Grid container spacing={1}>
-              <Grid item md={2} xs={2} lg={2}>
-                <IconButton
-                  aria-label="open drawer"
-                  onClick={handleDrawerOpen}
-                  className={styles.menuIcon}
-                  edge="start"
-                  sx={{
-                    mr: 2,
-                    display: {
-                      xs: 'none',
-                      sm: 'block'
-                    }
-                  }}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <IconButton
-                  aria-label="open drawer"
-                  onClick={toggleDrawer}
-                  className={styles.menuIcon}
-                  edge="start"
-                  sx={{
-                    mr: 2,
-                    display: {
-                      xs: 'block',
-                      sm: 'none'
-                    }
-                  }}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Grid>
-              <Grid item md={10} xs={10} lg={10}>
-                <div style={{ float: 'right', marginRight: '20px' }}>
-                  <div className={styles.userInfo}>
-                    <NotificationsActive className={styles.notificationIcon} />
-                    <span className={styles.avatar}>MK</span>
-                    <span className={styles.userName}>Mahesh Srinivasan</span>
-                    <MoreVert className={styles.menuList} />
-                  </div>
-                </div>
-              </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
+          setOpen={setOpen}
+          mobileOpen={mobileOpen}
+          setMobileOpen={setMobileOpen}
+        />
         <Drawer
           sx={{
             display: {
@@ -202,7 +116,7 @@ export default function Console() {
           <DrawerList />
         </Drawer>
         <Main open={open} style={{ padding: 0 }}>
-          <AllEquipment />
+          <AllLocation />
         </Main>
       </Box>
     </div>

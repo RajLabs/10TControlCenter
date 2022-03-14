@@ -5,7 +5,7 @@ export const location = [
   'Phoneix',
   'Phoneix',
   'Phoneix',
-  'Phoneix',
+  'Phoneix'
 ];
 
 export const rows = [
