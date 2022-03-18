@@ -1,4 +1,4 @@
-import { Pagination, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -7,7 +7,7 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { makeStyles } from '@mui/styles';
+import Paginate from 'modules/common/Paginate';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { rows } from '../LocationSlice';
@@ -76,12 +76,6 @@ const headCells: readonly HeadCell[] = [
   }
 ];
 
-const useStyles = makeStyles({
-  pagination: {
-    float: 'right',
-    paddingTop: '20px'
-  }
-});
 
 function EnhancedTableHead() {
   return (
@@ -96,17 +90,12 @@ function EnhancedTableHead() {
 }
 
 export default function LocationDataTable() {
-  // const [noOfPage, setNoOfPage] = React.useState(1);
-  const [currentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const [rowsPerPage] = React.useState(5);
   const indexOfLastPage = currentPage * rowsPerPage;
   const indexOfFirstPage = indexOfLastPage - rowsPerPage;
-  const totalPage = [];
-  for (let i = 1; i <= Math.ceil(rows.length / 5); i++) {
-    totalPage.push(i);
-  }
-  const count = totalPage.length;
-  const classes = useStyles();
+  console.log(indexOfLastPage);
+  console.log(indexOfFirstPage);
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -195,13 +184,11 @@ export default function LocationDataTable() {
             </TableBody>
           </Table>
           <div>
-            <div className={styles.pagination}>1-10 of 25 </div>
-            <Pagination
-              count={count}
-              shape="rounded"
-              color="primary"
-              className={classes.pagination}
-              page={currentPage}
+            <Paginate
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              indexOfFirstPage={indexOfFirstPage}
+              indexOfLastPage={indexOfLastPage}
             />
           </div>
         </TableContainer>
