@@ -76,7 +76,6 @@ const headCells: readonly HeadCell[] = [
   }
 ];
 
-
 function EnhancedTableHead() {
   return (
     <TableHead>
@@ -94,8 +93,6 @@ export default function LocationDataTable() {
   const [rowsPerPage] = React.useState(5);
   const indexOfLastPage = currentPage * rowsPerPage;
   const indexOfFirstPage = indexOfLastPage - rowsPerPage;
-  console.log(indexOfLastPage);
-  console.log(indexOfFirstPage);
 
   return (
     <Box sx={{ width: '100%' }}>

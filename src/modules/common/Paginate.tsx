@@ -7,11 +7,16 @@ import { rows } from '../location/LocationSlice';
 const useStyles = makeStyles({
   pagination: {
     float: 'right',
-    paddingTop: '20px',
+    paddingTop: '20px'
   }
 });
 
-export default function Paginate({ setCurrentPage, currentPage, indexOfFirstPage, indexOfLastPage }: any) {
+export default function Paginate({
+  setCurrentPage,
+  currentPage,
+  indexOfFirstPage,
+  indexOfLastPage
+}: any) {
   const classes = useStyles();
   const totalPage = [];
 
@@ -23,18 +28,20 @@ export default function Paginate({ setCurrentPage, currentPage, indexOfFirstPage
 
   const handlePagination = (event: any) => {
     setCurrentPage(event.currentTarget.textContent);
-  }
+  };
   return (
     <div>
-      <div className={styles.pagination}>{indexOfFirstPage + 1}-{indexOfLastPage} of {rows.length} </div>
+      <div className={styles.pagination}>
+        {indexOfFirstPage + 1}-{indexOfLastPage} of {rows.length}{' '}
+      </div>
       <Pagination
         count={count}
-        // page={currentPage}
+        page={currentPage}
         color="primary"
         shape="rounded"
         onChange={handlePagination}
         className={classes.pagination}
       />
     </div>
-  )
+  );
 }

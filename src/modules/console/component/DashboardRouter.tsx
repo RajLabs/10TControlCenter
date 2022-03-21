@@ -13,12 +13,16 @@ export default function DashboardRouter() {
     <div>
       <Routes>
         <Route path="/console/dashboard" element={<Dashboard />} />
-        <Route path="/console/createorganization" element={<CreateOrganization />} />
+        <Route
+          path="/console/createorganization"
+          element={<CreateOrganization />}
+        />
         <Route path="/console/allorganization" element={<AllOrganization />} />
         <Route path="/console/createlocation" element={<CreateLocation />} />
         <Route path="/console/alllocation" element={<AllLocation />} />
         <Route path="/console/createequipment" element={<CreateEquipment />} />
         <Route path="/console/allequipment" element={<AllEquipment />} />
+        <Route path="/console/equipmentdetails" element={<AllEquipment />} />
       </Routes>
     </div>
   );

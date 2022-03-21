@@ -1,11 +1,10 @@
 import { Drawer } from '@mui/material';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
-import AllLocation from 'modules/location/component/AllLocation';
+import EquipmentList from 'modules/equipment/component/EquipmentList';
 import React, { useState } from 'react';
-// import DashboardRouter from 'router/DashboardRouter';
 import useBreakpoint from 'utils/useBreakpoint.js';
+import Logo from '../../../assets/img/Logo.png';
 import AppBar from './AppBar';
 import DrawerList from './DrawerList';
 
@@ -76,14 +75,13 @@ export default function Console() {
         >
           <DrawerHeader
             style={{
-              paddingRight: '100px',
-              fontSize: '30px',
+              marginBottom: '20px',
+              marginTop: '20px',
               color: '#5346A0'
             }}
           >
-            ESP
+            <img src={Logo} alt="logo" />
           </DrawerHeader>
-          <Divider />
           <DrawerList />
         </Drawer>
         <Drawer
@@ -105,19 +103,17 @@ export default function Console() {
         >
           <DrawerHeader
             style={{
-              paddingRight: '100px',
-              fontSize: '30px',
+              marginBottom: '20px',
+              marginTop: '20px',
               color: '#5346A0'
             }}
           >
-            ESP
+            <img src={Logo} alt="logo" />
           </DrawerHeader>
-          <Divider />
           <DrawerList />
         </Drawer>
-        <Main open={open} style={{ padding: 0 }}>
-          <AllLocation />
-        </Main>
+        <Main open={open} style={{ padding: 0 }} />
+        <EquipmentList />
       </Box>
     </div>
   );

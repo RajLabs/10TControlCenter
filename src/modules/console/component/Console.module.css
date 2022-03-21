@@ -1,94 +1,95 @@
-*{
-     font-size: 15px;
+* {
+  font-size: 15px;
 }
-.normalization{
-     padding: 0 !important;
-     margin: 0 !important;
+.normalization {
+  padding: 0 !important;
+  margin: 0 !important;
 }
-.notificationIcon{
-     color: #707070;
-     float: left;
-     font-size: 20px;
-     margin-left: 10px;
-     margin-top: 5px;
+.notificationIcon {
+  color: #707070;
+  float: left;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
 }
-.avatar{
-     background-color: #5346A0;
-     color: #fff;
-     width: 35px;
-     height: 35px;
-     border-radius: 50%;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     padding: 0;
-     float: left;
-     font-size: 12px;
-     margin-left: 10px;
+.avatar {
+  background-color: #5346a0;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  float: left;
+  font-size: 12px;
+  margin-left: 10px;
 }
-.userName{
-     color: #000;
-     font-size: 15px;
-     float: left;
-     padding-left: 10px;
-     padding-top: 6px;
+.userName {
+  color: #000;
+  font-size: 15px;
+  float: left;
+  padding-left: 10px;
+  padding-top: 6px;
 }
-.menuIcon{
-     color: #707070;
+.menuIcon {
+  color: #707070;
 }
-.menuList{
-    color: #707070;
-    float: left;
-    margin-top: 5px;
+.menuList {
+  color: #707070;
+  float: left;
+  margin-top: 5px;
 }
-.listItem{
-     padding: 0 !important;
-     margin-bottom: 10px;
+.listItem {
+  padding: 0 !important;
+  margin-bottom: 10px;
 }
-.accordion{
-     min-width: 248px;
-     box-shadow: none !important;
+.accordion {
+  min-width: 248px;
+  box-shadow: none !important;
 }
-.accordionSummary{
-     height: 60px !important;
+.accordionSummary {
+  height: 60px !important;
 }
-.accordionSummary:hover{
-     background-color: #F5F8FD;
-     color: #5346A0;
-     border-left: 3px solid #5346A0;
-} 
-.accordionSummary:hover .drawerListIcon{
-     color: #5346A0;
-} 
-.accordionSummary:hover .accordionIcon{
-     color: #5346A0;
-} 
-.accordionIcon{
-     font-size: medium !important;
+.accordionSummary:hover {
+  background-color: #f5f8fd;
+  color: #5346a0;
+  border-left: 3px solid #5346a0;
 }
-.drawerListIcon{
-     font-size: 1.5rem;
+.accordionSummary:hover .drawerListIcon {
+  color: #5346a0;
+  fill: #5346a0;
 }
-.routerLink{
-     color: #4d4a4a;
-     text-decoration: none;
+.accordionSummary:hover .accordionIcon {
+  color: #5346a0;
 }
-.dashboard{
-     height: 60px;
+.accordionIcon {
+  font-size: medium !important;
+}
+.drawerListIcon:hover {
+  fill: #5346a0;
+}
+.routerLink {
+  color: #4d4a4a;
+  text-decoration: none;
+}
+.dashboard {
+  height: 60px;
 }
 .dashboard:hover {
-   color: #5346A0;
-   background-color: #F5F8FD;
-border-left: 3px solid #5346A0;
+  color: #5346a0;
+  background-color: #f5f8fd;
+  border-left: 3px solid #5346a0;
 }
-.listItemText{
-     padding: 10px 20px 10px 10px;
+.listItemText {
+  padding: 10px 20px 10px 10px;
 }
-.userInfo{
-     margin-top: 8px;
+.userInfo {
+  margin-top: 8px;
 }
-@media only screen and (max-width:768px) {
-     .userInfo{
-          display: none;
-     }
+@media only screen and (max-width: 768px) {
+  .userInfo {
+    display: none;
+  }
 }
