@@ -16,7 +16,7 @@ import styles from './equipment.module.css';
 function EnhancedTableHead() {
   return (
     <TableHead>
-      <TableRow style={{ backgroundColor: 'rgb(238,238,238)' }}>
+      <TableRow style={{ backgroundColor: '#E5EEFF' }}>
         <TableCell>Phone Number</TableCell>
         <TableCell>Last Seen Online</TableCell>
         <TableCell>Description</TableCell>
@@ -26,38 +26,9 @@ function EnhancedTableHead() {
     </TableHead>
   );
 }
-const rows = [
-  {
-    number: 4523452354,
-    lastSeen: '10/02/2020 12:05:20 am',
-    description: 'Voice Line 1',
-    mac: 'C0:74:AD:26:49:4A',
-    port: 4
-  },
-  {
-    number: 4523452354,
-    lastSeen: '10/02/2020 12:05:20 am',
-    description: 'Voice Line 1',
-    mac: 'C0:74:AD:26:49:4A',
-    port: 4
-  },
-  {
-    number: 4523452354,
-    lastSeen: '10/02/2020 12:05:20 am',
-    description: 'Voice Line 1',
-    mac: 'C0:74:AD:26:49:4A',
-    port: 4
-  },
-  {
-    number: 4523452354,
-    lastSeen: '10/02/2020 12:05:20 am',
-    description: 'Voice Line 1',
-    mac: 'C0:74:AD:26:49:4A',
-    port: 4
-  }
-];
 
-export default function DidList() {
+export default function DidList({ didList }: any) {
+
   return (
     <div className={styles.equipmentDidList}>
       <Grid container>
@@ -76,7 +47,7 @@ export default function DidList() {
           <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
             <EnhancedTableHead />
             <TableBody>
-              {rows.map((row: any, index: number) => {
+              {didList.map((row: any, index: number) => {
                 return (
                   <TableRow>
                     <TableCell>{row.number}</TableCell>

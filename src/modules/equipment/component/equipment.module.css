@@ -34,6 +34,7 @@
 .equipmentType {
   border-left: 1px solid #10054b;
   font-size: 12px;
+  cursor: pointer;
 }
 .didHeader {
   background-color: #e5eeff;
@@ -66,11 +67,11 @@
   box-shadow: none;
 }
 .online {
-  background-color: #50840b !important;
+  background-color: white;
   width: 60px;
   height: 22px;
   border-radius: 20px;
-  color: white;
+  color: #50840b !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,6 +117,21 @@
 }
 .headerDid {
   padding-top: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
+}
+.equipmentList {
+  border-left: 2px solid #5346a0;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 0%;
+  margin-bottom: 10px;
+}
+.equipmentList:hover {
+  border-left: 2px solid #5346a0;
+  background-color: #e9f2ff;
+}
+.arrowBTN {
+  background-color: white;
+  max-width: 20px !important;
 }

@@ -7,22 +7,27 @@ import AllOrganization from 'modules/organization/component/AllOrganization';
 import CreateOrganization from 'modules/organization/component/CreateOrganization';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Console from './Console';
 
 export default function DashboardRouter() {
   return (
     <div>
       <Routes>
-        <Route path="/console/dashboard" element={<Dashboard />} />
+        <Route path="/console/dashboard" element={
+          <Dashboard />
+        } />
         <Route
           path="/console/createorganization"
           element={<CreateOrganization />}
         />
-        <Route path="/console/allorganization" element={<AllOrganization />} />
-        <Route path="/console/createlocation" element={<CreateLocation />} />
-        <Route path="/console/alllocation" element={<AllLocation />} />
-        <Route path="/console/createequipment" element={<CreateEquipment />} />
-        <Route path="/console/allequipment" element={<AllEquipment />} />
-        <Route path="/console/equipmentdetails" element={<AllEquipment />} />
+        <Route path="/allorganization" element={
+          <AllOrganization />
+        } />
+        <Route path="/createlocation" element={<CreateLocation />} />
+        <Route path="/alllocation" element={<AllLocation />} />
+        <Route path="/createequipment" element={<CreateEquipment />} />
+        <Route path="/allequipment" element={<AllEquipment />} />
+        <Route path="/equipmentdetails" element={<AllEquipment />} />
       </Routes>
     </div>
   );
