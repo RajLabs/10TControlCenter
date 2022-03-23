@@ -69,7 +69,7 @@
 .online {
   background-color: white;
   width: 60px;
-  height: 22px;
+  height: 25px;
   border-radius: 20px;
   color: #50840b !important;
   display: flex;
@@ -106,32 +106,37 @@
   font-weight: 100 !important;
 }
 .equipmentDidList {
-  padding-top: 30px;
+  padding: 30px;
   background-color: white;
-  padding-left: 30px;
   height: 900px;
 }
-.vegaPort {
-  font-size: 20px;
-  font-weight: 600;
-}
-.headerDid {
-  padding-top: 20px;
-  font-weight: 600;
-  font-size: 18px;
-}
 .equipmentList {
-  border-left: 2px solid #5346a0;
+  border-left: 2px solid #efefef;
   font-size: 12px;
   cursor: pointer;
   border-radius: 0%;
   margin-bottom: 10px;
 }
-.equipmentList:hover {
-  border-left: 2px solid #5346a0;
+.equipmentListOnClick {
+  border-left: 3px solid #5346a0;
   background-color: #e9f2ff;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 0%;
+  margin-bottom: 10px;
 }
 .arrowBTN {
-  background-color: white;
-  max-width: 20px !important;
+  background-color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addBTN {
+  font-size: 25px !important;
+  font-weight: 500 !important;
+}
+.equipmentAddField {
+  padding-top: 15px;
+  padding-right: 15px;
+  float: right;
 }

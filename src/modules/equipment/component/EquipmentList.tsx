@@ -57,7 +57,7 @@ export default function EquipmentList() {
                       className={styles.online}
                       style={{ marginTop: '10px' }}
                     >
-                      <Typography variant="subtitle1">Online</Typography>
+                      <Typography variant="h4">Online</Typography>
                     </div>
                   </Grid>
                 </Grid>

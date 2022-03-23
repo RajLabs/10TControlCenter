@@ -1,33 +1,23 @@
 import { Drawer } from '@mui/material';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
+import Dashboard from 'modules/dashboard/Dashboard';
+import AllEquipment from 'modules/equipment/component/AllEquipment';
+import CreateEquipment from 'modules/equipment/component/CreateEquipment';
 import EquipmentList from 'modules/equipment/component/EquipmentList';
+import AllLocation from 'modules/location/component/AllLocation';
+import CreateLocation from 'modules/location/component/CreateLocation';
+import AllOrganization from 'modules/organization/component/AllOrganization';
+import CreateOrganization from 'modules/organization/component/CreateOrganization';
 import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import useBreakpoint from 'utils/useBreakpoint.js';
 import Logo from '../../../assets/img/Logo.png';
 import AppBar from './AppBar';
 import DrawerList from './DrawerList';
 
+
 const drawerWidth = 250;
-const Main = styled('main', { shouldForwardProp: prop => prop !== 'open' })<{
-  open?: boolean;
-}>(({ theme, open }) => ({
-  flexGrow: 1,
-  backgroundColor: '#F5F8FD',
-  padding: theme.spacing(3),
-  transition: theme.transitions.create('margin', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen
-  }),
-  marginLeft: `-${drawerWidth}px`,
-  ...(open && {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    }),
-    marginLeft: 0
-  })
-}));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -112,8 +102,16 @@ export default function Console() {
           </DrawerHeader>
           <DrawerList />
         </Drawer>
-        <Main open={open} style={{ padding: 0 }} />
-        <EquipmentList />
+        <Routes>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="createorganization" element={<CreateOrganization />} />
+          <Route path="allorganization" element={<AllOrganization />} />
+          <Route path="createlocation" element={<CreateLocation />} />
+          <Route path="alllocation" element={<AllLocation />} />
+          <Route path="createequipment" element={<CreateEquipment />} />
+          <Route path="allequipment" element={<AllEquipment />} />
+          <Route path="equipmentlist" element={<EquipmentList />} />
+        </Routes>
       </Box>
     </div>
   );

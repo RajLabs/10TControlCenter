@@ -4,13 +4,19 @@ import React from 'react';
 import styles from './Location.module.css';
 import LocationDataTable from './LocationDataTable';
 import { location } from '../LocationSlice';
+import map from '../../../assets/img/Map_Icon.svg';
 
 export default function AllLocation() {
   return (
     <div className={styles.sidebarMenuAlignment}>
       <div className={styles.locationHeader}>
-        <div className={styles.location}>Location</div>
-        <div className={styles.starbucks}>Starbucks</div>
+        <div className={styles.map}>
+          <img src={map} alt="" />
+        </div>
+        <div className={styles.locations}>
+          <div className={styles.location}>Location</div>
+          <div className={styles.starbucks}>Starbucks</div>
+        </div>
       </div>
       <div className={styles.searchBar}>
         <IconButton

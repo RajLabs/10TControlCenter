@@ -46,6 +46,11 @@ const customTheme = createTheme({
     body1: {
       fontSize: '14px'
     },
+    h1: {
+      fontSize: '18px',
+      fontWeight: 600,
+      padding: '10px 0 10px 0'
+    },
     h2: {
       fontSize: '11px',
       color: '#707070'
@@ -68,7 +73,45 @@ const customTheme = createTheme({
     subtitle1: {
       fontSize: '11px'
     }
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          minWidth: '30px',
+          height: '30px',
+          padding: 0,
+          margin: 3,
+          textAlign: 'center'
+        }
+      }
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 0,
+          boxShadow: 'none',
+          padding: '10px'
+        }
+      }
+    },
+    MuiTableHead: {
+      styleOverrides: {
+        root: {
+          maxHeight: '30px',
+          backgroundColor: '#DDE9FC'
+        }
+      }
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          padding: '10px',
+          fontWeight: 600,
+          borderBottom: 'none'
+        }
+      }
+    }
   }
 });
-
 export default customTheme;

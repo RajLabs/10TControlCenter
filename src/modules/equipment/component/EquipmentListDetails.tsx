@@ -1,7 +1,6 @@
 import { ArrowForwardIos } from '@mui/icons-material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { Button, Card, Grid, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
 import DidList from './DidList';
 import styles from './equipment.module.css';
@@ -82,21 +81,14 @@ const equipment = [
     ]
   },
 ]
-const useStyles = makeStyles({
-  equipmentDetailBTN: {
-    root: {
-      maxWidth: "20px",
-      fontWeight: 900
-    }
-  }
-})
 
 export default function EquipmentListDetails() {
   const [didList, setDidList] = useState<any>([]);
-  const classes = useStyles();
+  const [cardStyle, setCardStyle] = useState("equipmentList");
 
   function handleClick(list: any) {
-    setDidList(list.dids)
+    setDidList(list.dids);
+    setCardStyle("equipmentListOnClick")
   }
 
   return (
@@ -104,27 +96,29 @@ export default function EquipmentListDetails() {
       <Grid container>
         <Grid item lg={5} md={6}>
           <Grid container>
-            <Grid item lg={6}>
+            <Grid item lg={9}>
               <Typography>
                 <h1 className={styles.headerTwo}>Equipment</h1>
               </Typography>
             </Grid>
-            <Grid item lg={6} style={{ marginTop: '10px' }}>
-              <Button variant="contained" sx={{ maxWidth: "20px" }} className={classes.equipmentDetailBTN} >
-                +
-              </Button>
-              <Button className={styles.arrowBTN}>
-                <ArrowBackIosIcon />
-              </Button>
-              <Button style={{ backgroundColor: 'white' }}>
-                <ArrowForwardIos />
-              </Button>
+            <Grid item lg={3} >
+              <div className={styles.equipmentAddField}>
+                <Button variant="contained" className={styles.addBTN} >
+                  +
+                </Button>
+                <Button className={styles.arrowBTN}>
+                  <ArrowBackIosIcon sx={{ paddingLeft: '5px' }} />
+                </Button>
+                <Button className={styles.arrowBTN}>
+                  <ArrowForwardIos sx={{ paddingLeft: '5px' }} />
+                </Button>
+              </div>
             </Grid>
           </Grid>
           {equipment.map(list => {
             return (
-              <Card className={styles.equipmentList} onClick={() => handleClick(list)}>
-                <Grid container style={{ margin: '10px' }}>
+              <Card className={styles[cardStyle]} onClick={() => handleClick(list)}>
+                <Grid container>
                   <Grid item lg={4}>
                     <Typography variant="h2" color="secondary-light">
                       Equipment Type
@@ -147,19 +141,17 @@ export default function EquipmentListDetails() {
                     </Typography>
                     <Typography variant="body2">{list.mac}</Typography>
                   </Grid>
-                  <Grid container style={{ margin: '10px' }}>
-                    <Grid item lg={4}>
-                      <Typography variant="h2" color="secondary-light">
-                        Serial
-                      </Typography>
-                      <Typography variant="body2">{list.serial}</Typography>
-                    </Grid>
-                    <Grid item lg={4}>
-                      <Typography variant="h2" color="secondary-light">
-                        Description
-                      </Typography>
-                      <Typography variant="body2">-</Typography>
-                    </Grid>
+                  <Grid item lg={4}>
+                    <Typography variant="h2" color="secondary-light">
+                      Serial#
+                    </Typography>
+                    <Typography variant="body2">{list.serial}</Typography>
+                  </Grid>
+                  <Grid item lg={4}>
+                    <Typography variant="h2" color="secondary-light">
+                      Description
+                    </Typography>
+                    <Typography variant="body2">-</Typography>
                   </Grid>
                 </Grid>
               </Card>

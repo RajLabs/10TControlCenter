@@ -28,15 +28,22 @@
 }
 .locationHeader {
   float: left;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
+}
+.map {
+  float: left;
+  margin-top: 20px;
+}
+.locations {
+  float: left;
 }
 .location {
   color: #5346a0;
   font-size: 20px;
-  padding-left: 50px;
+  padding-left: 20px;
 }
 .starbucks {
-  padding-left: 50px;
+  padding-left: 20px;
   color: gray;
 }
 .city {
@@ -61,8 +68,10 @@
   text-transform: capitalize !important;
   float: left;
   margin-left: 5px !important;
-  height: 35px;
+  height: 35px !important;
   background-color: #5346a0 !important;
+  padding: 8px !important;
+  margin-top: -0.5px !important;
 }
 .addLocation {
   height: 35px;
@@ -70,6 +79,7 @@
   float: right !important;
   background-color: #565656 !important;
   border-radius: 20px !important;
+  padding: 10px !important;
 }
 .tableHeader {
   background-color: #d3e3fc;

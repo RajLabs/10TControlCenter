@@ -11,7 +11,7 @@ export default function Router() {
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route
-        path="/console"
+        path="/console/*"
         element={
           <RequireAuth>
             <Console />
