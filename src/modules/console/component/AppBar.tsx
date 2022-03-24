@@ -1,4 +1,4 @@
-import { MoreVert, NotificationsActive } from '@mui/icons-material';
+import { MoreVert } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Grid } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -95,7 +95,6 @@ export default function AppBar({
             <Grid item md={10} xs={10} lg={10}>
               <div style={{ float: 'right', marginRight: '20px' }}>
                 <div className={styles.userInfo}>
-                  <NotificationsActive className={styles.notificationIcon} />
                   <span className={styles.avatar}>MK</span>
                   <span className={styles.userName}>Mahesh Srinivasan</span>
                   <MoreVert className={styles.menuList} />

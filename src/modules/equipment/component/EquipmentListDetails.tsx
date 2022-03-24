@@ -84,21 +84,21 @@ const equipment = [
 
 export default function EquipmentListDetails() {
   const [didList, setDidList] = useState<any>([]);
-  const [cardStyle, setCardStyle] = useState("equipmentList");
+  const [didListIndex, setDidListIndex] = useState(-1);
 
-  function handleClick(list: any) {
+  function handleClick(list: any, index: number) {
     setDidList(list.dids);
-    setCardStyle("equipmentListOnClick")
+    setDidListIndex(index);
   }
 
   return (
     <div>
       <Grid container>
         <Grid item lg={5} md={6}>
-          <Grid container>
+          <Grid container style={{ padding: '15px 15px 15px 20px' }}>
             <Grid item lg={9}>
-              <Typography>
-                <h1 className={styles.headerTwo}>Equipment</h1>
+              <Typography variant="h1" color="secondary">
+                Equipment
               </Typography>
             </Grid>
             <Grid item lg={3} >
@@ -115,43 +115,43 @@ export default function EquipmentListDetails() {
               </div>
             </Grid>
           </Grid>
-          {equipment.map(list => {
+          {equipment.map((list: any, index: number) => {
             return (
-              <Card className={styles[cardStyle]} onClick={() => handleClick(list)}>
-                <Grid container>
-                  <Grid item lg={4}>
+              <Card className={didListIndex != index ? styles.equipmentList : styles.equipmentListOnClick} onClick={() => handleClick(list, index)}>
+                <Grid container >
+                  <Grid item lg={4} style={{ margin: "10px 0px 10px 0px" }}>
                     <Typography variant="h2" color="secondary-light">
                       Equipment Type
                     </Typography>
-                    <Typography variant="body2" color="primary">
+                    <Typography variant="h3" color="primary">
                       {list.type}
                     </Typography>
                   </Grid>
-                  <Grid item lg={4}>
+                  <Grid item lg={4} style={{ margin: "10px 0px 10px 0px" }}>
                     <Typography variant="h2" color="secondary-light">
                       Last Seen Online
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant="h3">
                       {list.lastSeen}
                     </Typography>
                   </Grid>
-                  <Grid item lg={4}>
+                  <Grid item lg={4} style={{ margin: "10px 0px 10px 0px" }}>
                     <Typography variant="h2" color="secondary-light">
                       Mac
                     </Typography>
-                    <Typography variant="body2">{list.mac}</Typography>
+                    <Typography variant="h3">{list.mac}</Typography>
                   </Grid>
-                  <Grid item lg={4}>
+                  <Grid item lg={4} style={{ margin: "10px 0px 10px 0px" }}>
                     <Typography variant="h2" color="secondary-light">
                       Serial#
                     </Typography>
-                    <Typography variant="body2">{list.serial}</Typography>
+                    <Typography variant="h3">{list.serial}</Typography>
                   </Grid>
-                  <Grid item lg={4}>
-                    <Typography variant="h2" color="secondary-light">
+                  <Grid item lg={4} style={{ margin: "10px 0px 10px 0px" }}>
+                    <Typography variant="h2" color="secondary-light" >
                       Description
                     </Typography>
-                    <Typography variant="body2">-</Typography>
+                    <Typography variant="h3">-</Typography>
                   </Grid>
                 </Grid>
               </Card>

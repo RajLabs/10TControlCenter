@@ -21,7 +21,7 @@
   min-width: 400px;
   height: 42px;
   box-sizing: border-box;
-  padding-top: 5px;
+  padding-top: 8px;
 }
 .locationtable {
   clear: both;
@@ -148,4 +148,9 @@
   font-size: 15px !important;
   margin-left: 5px !important;
   margin-bottom: -2px !important;
+}
+@media only screen and (max-width: 425px) {
+  .searchBar {
+    display: none;
+  }
 }

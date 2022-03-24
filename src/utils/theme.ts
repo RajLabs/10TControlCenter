@@ -48,12 +48,17 @@ const customTheme = createTheme({
     },
     h1: {
       fontSize: '18px',
-      fontWeight: 600,
+      fontWeight: 'medium',
       padding: '10px 0 10px 0'
     },
     h2: {
       fontSize: '11px',
       color: '#707070'
+    },
+    h3: {
+      fontSize: '12px',
+      fontWeight: 600,
+      color: '#4A4A4E'
     },
     body2: {
       fontSize: '12px',
@@ -91,14 +96,14 @@ const customTheme = createTheme({
         root: {
           borderRadius: 0,
           boxShadow: 'none',
-          padding: '10px'
+          padding: '5px',
+          paddingLeft: '15px'
         }
       }
     },
     MuiTableHead: {
       styleOverrides: {
         root: {
-          maxHeight: '30px',
           backgroundColor: '#DDE9FC'
         }
       }
@@ -106,7 +111,6 @@ const customTheme = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: {
-          padding: '10px',
           fontWeight: 600,
           borderBottom: 'none'
         }

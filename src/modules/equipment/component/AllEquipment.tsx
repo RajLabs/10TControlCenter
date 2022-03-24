@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './equipment.module.css';
 import EquipmentDetails from './EquipmentDetails';
 import EquipmentDID from './EquipmentDID';
+import map from '../../../assets/img/MapIcon.svg'
 
 export default function AllEquipment() {
   return (
@@ -20,10 +21,11 @@ export default function AllEquipment() {
               <div className={styles.equipmentDetails}>
                 <Grid container>
                   <Grid item xs={3} md={3} lg={4}>
+                    <img src={map} alt="map" className={styles.mapImage} />
                     <Typography className={styles.locationDetails}>
                       Location Details
                     </Typography>
-                    <Typography variant="h5">
+                    <Typography variant="h5" style={{ clear: "both" }}>
                       Starbucks 6966 (4605 E Chandler Blvd - Phoenix, AZ)
                     </Typography>
                   </Grid>
@@ -46,10 +48,6 @@ export default function AllEquipment() {
                       <Grid item xs={3} md={3} lg={3}>
                         <Typography variant="h5">Zip</Typography>
                         <Typography variant="h4">85048</Typography>
-                      </Grid>
-                      <Grid item xs={3} md={3} lg={3}>
-                        <Typography variant="h5">e911</Typography>
-                        <Typography variant="h4">Off</Typography>
                       </Grid>
                     </Grid>
                   </Grid>

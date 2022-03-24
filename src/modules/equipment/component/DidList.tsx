@@ -17,11 +17,11 @@ function EnhancedTableHead() {
   return (
     <TableHead>
       <TableRow >
-        <TableCell>Phone Number</TableCell>
-        <TableCell>Last Seen Online</TableCell>
-        <TableCell>Description</TableCell>
-        <TableCell>Equipment MAC</TableCell>
-        <TableCell>Device Port</TableCell>
+        <TableCell className={styles.tableCell}>Phone Number</TableCell>
+        <TableCell className={styles.tableCell}>Last Seen Online</TableCell>
+        <TableCell className={styles.tableCell}>Description</TableCell>
+        <TableCell className={styles.tableCell}>Equipment MAC</TableCell>
+        <TableCell className={styles.tableCell}>Device Port</TableCell>
       </TableRow>
     </TableHead>
   );
